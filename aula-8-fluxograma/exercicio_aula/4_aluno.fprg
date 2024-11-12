@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="4_aluno"/>
+        <attribute name="authors" value="ead"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-04 10:37:38 "/>
+        <attribute name="created" value="ZWFkO0xBQi1GMDYtMDE7MjAyNC0xMC0wNDsiMTA6MjU6NDkgIjsyMDUz"/>
+        <attribute name="edited" value="ZWFkO0xBQi1GMDYtMDE7MjAyNC0xMC0wNDsiMTA6Mzc6MzggIjsxOzIxNjI="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="&#8226;&#9;Objetivo: Criar um algoritmo que verifica a presen&#231;a de um aluno em uma aula.&#13;&#10;&#9;&#8226;&#9;Passos:&#13;&#10;&#9;1.&#9;Solicitar o nome do aluno.&#13;&#10;&#9;2.&#9;Verificar em uma lista se o nome est&#225; presente.&#13;&#10;&#9;3.&#9;Se estiver presente, exibir &#8220;Aluno presente&#8221;.&#13;&#10;&#9;4.&#9;Caso contr&#225;rio, exibir &#8220;Aluno ausente&#8221;."/>
+            <declare name="aluno1" type="String" array="False" size=""/>
+            <declare name="aluno2" type="String" array="False" size=""/>
+            <declare name="nomeAluno" type="String" array="False" size=""/>
+            <output expression="&quot;Digite o nome do aluno&quot;" newline="True"/>
+            <input variable="nomeAluno"/>
+            <assign variable="aluno1" expression="&quot;zeca urubu&quot;"/>
+            <assign variable="aluno2" expression="&quot;pica pau&quot;"/>
+            <if expression="nomeAluno = aluno1 or nomeAluno = aluno2">
+                <then>
+                    <output expression="&quot;Aluno presente&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Aluno ausente&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

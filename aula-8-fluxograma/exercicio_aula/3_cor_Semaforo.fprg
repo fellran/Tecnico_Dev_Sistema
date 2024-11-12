@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="cor_Semaforo"/>
+        <attribute name="authors" value="ead"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-04 10:16:50 "/>
+        <attribute name="created" value="ZWFkO0xBQi1GMDYtMDE7MjAyNC0xMC0wNDsiMDk6NTk6MzkgIjsyMDY3"/>
+        <attribute name="edited" value="ZWFkO0xBQi1GMDYtMDE7MjAyNC0xMC0wNDsiMTA6MTY6NTAgIjsxOzIxNTM="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="&#8226;&#9;Objetivo: Simular o comportamento de um sem&#225;foro de tr&#226;nsito.&#13;&#10;&#9;&#8226;&#9;Passos:&#13;&#10;&#9;1.&#9;O sistema verifica a cor do sem&#225;foro.&#13;&#10;&#9;2.&#9;Se for verde, exibir &#8220;Siga&#8221;.&#13;&#10;&#9;3.&#9;Se for amarelo, exibir &#8220;Aten&#231;&#227;o&#8221;.&#13;&#10;&#9;4.&#9;Se for vermelho, exibir &#8220;Pare&#8221;.&#13;&#10;"/>
+            <declare name="corSemaforo" type="String" array="False" size=""/>
+            <output expression="&quot;que cor esta o semaforo&quot;" newline="True"/>
+            <input variable="corSemaforo"/>
+            <if expression="corSemaforo = &quot;verde&quot;">
+                <then>
+                    <output expression="&quot;Siga&quot;" newline="True"/>
+                </then>
+                <else/>
+            </if>
+            <if expression="corSemaforo = &quot;amarelo&quot;">
+                <then>
+                    <output expression="&quot;Aten&#231;&#227;o&quot;" newline="True"/>
+                </then>
+                <else/>
+            </if>
+            <if expression="corSemaforo = &quot;vermelho&quot;">
+                <then>
+                    <output expression="&quot;Pare&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Cor incorreta&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

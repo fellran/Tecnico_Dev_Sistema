@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Validar_idade"/>
+        <attribute name="authors" value="ead"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-04 09:29:47 "/>
+        <attribute name="created" value="ZWFkO0xBQi1GMDYtMDE7MjAyNC0xMC0wNDsiMDg6NDI6MzcgIjsyMDU2"/>
+        <attribute name="edited" value="ZWFkO0xBQi1GMDYtMDE7MjAyNC0xMC0wNDsiMDk6Mjk6NDcgIjsxOzIxNzE="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Algoritimo para Validar Idade"/>
+            <declare name="idade" type="Real" array="False" size=""/>
+            <output expression="&quot;Informe sua Idade&quot;" newline="True"/>
+            <input variable="idade"/>
+            <if expression="idade &gt; 18">
+                <then>
+                    <output expression="&quot;vo&#231;e esta apto a entrar&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;vo&#231;e n&#227;o esta apto a entrar&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

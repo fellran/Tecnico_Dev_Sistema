@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="5_documento"/>
+        <attribute name="authors" value="ead"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-04 10:53:15 "/>
+        <attribute name="created" value="ZWFkO0xBQi1GMDYtMDE7MjAyNC0xMC0wNDsiMTA6Mzg6NDMgIjsyMDUx"/>
+        <attribute name="edited" value="ZWFkO0xBQi1GMDYtMDE7MjAyNC0xMC0wNDsiMTA6NTM6MTUgIjsxOzIxNTU="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="&#8226;&#9;Objetivo: Verificar se um documento est&#225; aprovado com base em crit&#233;rios espec&#237;ficos.&#13;&#10;&#9;&#8226;&#9;Passos:&#13;&#10;&#9;1.&#9;Solicitar status do documento (aprovado, pendente ou rejeitado).&#13;&#10;&#9;2.&#9;Se aprovado, exibir &#8220;Documento aprovado&#8221;.&#13;&#10;&#9;3.&#9;Se pendente, exibir &#8220;Documento em an&#225;lise&#8221;.&#13;&#10;&#9;4.&#9;Se rejeitado, exibir &#8220;Documento rejeitado&#8221;."/>
+            <declare name="CPF" type="String" array="False" size=""/>
+            <assign variable="CPF" expression="&quot;Aprovado&quot;"/>
+            <declare name="Matricula" type="String" array="False" size=""/>
+            <assign variable="Matricula" expression="&quot;Pendente&quot;"/>
+            <declare name="CNPJ" type="String" array="False" size=""/>
+            <assign variable="CNPJ" expression="&quot;rejeitado&quot;"/>
+            <declare name="tipoDocumento" type="String" array="False" size=""/>
+            <output expression="&quot;Digite o tipo de documento&quot;" newline="True"/>
+            <input variable="tipoDocumento"/>
+            <if expression="tipoDocumento = &quot;CPF&quot;">
+                <then>
+                    <output expression="&quot;CPF Aprovado&quot;" newline="True"/>
+                </then>
+                <else/>
+            </if>
+            <if expression="tipoDocumento = &quot;Matricula&quot;">
+                <then>
+                    <output expression="&quot;Matricula pendente&quot;" newline="True"/>
+                </then>
+                <else/>
+            </if>
+            <if expression="tipoDocumento = &quot;CNPJ&quot;">
+                <then>
+                    <output expression="&quot;CNPJ rejeitado&quot;" newline="True"/>
+                </then>
+                <else/>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

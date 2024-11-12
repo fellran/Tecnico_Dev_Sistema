@@ -1,0 +1,43 @@
+programa {
+  funcao inicio() {
+    cadeia nome1
+    inteiro operador
+    inteiro numero1 , numero2
+    inteiro resultado
+    // Ésse algoritimo é uma conversa com o usuario para fazer duas operações de matematica subutração e adição
+    // se o usuario digitar 1 o algoritimo fará uma adição
+    // se o usuario digitar 2 o algoritimo fará uma subitração
+    escreva("Qual o seu nome\n")
+    leia(nome1)
+    escreva("Olá " , nome1,"\n")
+    escreva("Escreva entre esses 2 operadores\n .1 -adição\n .2 -subitração\n")
+    escreva("Escolha entre esses numeros acima\n")
+    leia(operador)
+    se(
+      operador == 1
+      
+    ){
+      escreva("Escreva sua soma\n")
+      escreva("Digite o 1° numero a ser somado\n")
+      leia(numero1)
+      escreva("Digite o 2° numero a ser somado\n")
+      leia(numero2)
+            resultado = numero1 + numero2
+
+      escreva(" soma do dois numero é: ",numero1," + ",numero2," = ", resultado)
+    }
+    senao se(
+      operador == 2
+    ){
+       escreva("Digite sua subitração\n")
+       escreva("Digite o 1° numero a ser subritraido\n")
+       leia(numero1)
+       escreva("Digite o 2° numero a ser subitraido\n")
+       leia(numero2)
+           resultado = numero1 - numero2
+
+           escreva("A subritação dos numero é: ",numero1 ," - ", numero2," = ",resultado)
+
+    }
+  }
+}

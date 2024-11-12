@@ -1,0 +1,8 @@
+{
+	"nodes":[
+		{"id":"ba3296b986be1acf","x":366,"y":-384,"width":250,"height":60,"type":"text","text":"#AURORA"},
+		{"id":"0611e6870a2a01bb","x":-1,"y":-217,"width":250,"height":117,"type":"text","text":"#ATENA\n\nÉ o software"},
+		{"id":"9a9fb03da6f56490","x":839,"y":-221,"width":250,"height":60,"type":"text","text":"#HEFESTO"}
+	],
+	"edges":[]
+}

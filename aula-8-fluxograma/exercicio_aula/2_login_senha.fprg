@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="loginSenha"/>
+        <attribute name="authors" value="ead"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-04 09:58:19 "/>
+        <attribute name="created" value="ZWFkO0xBQi1GMDYtMDE7MjAyNC0xMC0wNDsiMDk6MzE6MjUgIjsyMDUy"/>
+        <attribute name="edited" value="ZWFkO0xBQi1GMDYtMDE7MjAyNC0xMC0wNDsiMDk6NTg6MTkgIjsxOzIxNzI="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="&#9;&#8226;&#9;Objetivo: Criar um algoritmo que simule um sistema de login simples.&#13;&#10;&#9;&#8226;&#9;Passos:&#13;&#10;&#9;1.&#9;Solicitar o nome de usu&#225;rio e senha.&#13;&#10;&#9;2.&#9;Verificar se os dados est&#227;o corretos.&#13;&#10;&#9;3.&#9;Se estiverem corretos, exibir &#8220;Login bem-sucedido&#8221;.&#13;&#10;&#9;4.&#9;Caso contr&#225;rio, exibir &#8220;Nome de usu&#225;rio ou senha incorretos&#8221;.&#13;&#10;"/>
+            <declare name="nomeUsuario" type="String" array="False" size=""/>
+            <output expression="&quot;Digite seu Nome&quot;" newline="True"/>
+            <input variable="nomeUsuario"/>
+            <declare name="senhaUsuario" type="Integer" array="False" size=""/>
+            <output expression="&quot;Digite sua Senha&quot;" newline="True"/>
+            <input variable="senhaUsuario"/>
+            <if expression="nomeUsuario = &quot;felipe&quot; and senhaUsuario = 123">
+                <then>
+                    <output expression="&quot;login bem sucedido&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Falha no Login&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
