@@ -32,3 +32,4 @@ if (exesso <= 0):
     print('Não pagará multa')
 else:
     print('O valor da multa', valor_multa)
+
