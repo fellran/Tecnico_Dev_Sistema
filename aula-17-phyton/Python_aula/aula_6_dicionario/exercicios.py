@@ -1,3 +1,6 @@
+from os import system as sy
+import time
+sy('cls')
 # 1. Cadastro de Produto
 # Você precisa criar um programa que armazene informações de um produto em um dicionário. 
 # As informações devem incluir nome, preço e quantidade em estoque. Depois,
@@ -6,7 +9,7 @@
 # produtos = {
 #     # chave  valor
 #     'nome' : 'Biscoito',
-#     'quantidade' : '5',
+#     'preço' : '5',
 #     'estoque' : '60'
 # }
 
@@ -18,22 +21,24 @@
 # Obs: O salvamento deverá parar apenas quando o usuário digitar "finalizar"
 
 agenda = {
-    # chave   valor
-    'nome' : 'Felipe',
-    'numero' : '12345'
 }
 
-cont = 0
+cont = ''
 
 while cont != 'finalizar':
-    
-    cont = input('Deseja Adicionar contatos')
-    if cont == 'sim':
-        agenda['nome'] = str(input('Digite um nome do contado >>> '))
-        agenda['numero'] = str(input('Digite o novo contato >>> '))
-        cont = input('Deseja continuar >>> ')
+
+    cont = input('Deseja Adicionar contatos >>> ')
+    if cont == 'adicionar':
+        nome = str(input('Digite um nome do contado >>> '))
+        numero = str(input(f'Digite o novo numero do {nome} >>> '))
+
+        agenda.update({
+            nome : numero
+        })
+
     elif cont == 'finalizar':
-        print('Obrigado')
+        break
 
 
 print(agenda)
+
