@@ -1,32 +1,62 @@
 # 1)Peça ao usuário dois números e uma operação matemática (+, -, *, /). Execute a operação e trate erros como divisão por zero e 
 # operação inválida.
-# number1 = int(input('Digite um numero >>> '))
-# print('+, -, *, /')
-# operador = str(input('Digite um operador >>> '))
-# number2 = int(input('Digite um numero >>> '))
 
-# try:
-#     operador != '+' and operador != '-' and operador != '*' and operador != '/'
-# except:
-#     print('Operação invalida')
+# def calcular():
+#     number1 = int(input('Digite um numero >>> '))
+#     operador = str(input('Digite um operador >>> '))
+#     number2 = int(input('Digite um numero >>> '))
+#     expressoes = ['+', '-', '*', '/']
 
-# match operador:
-#     case '+':
-#         resul = number1 + number2
-#         print(f'{number1} + {number2} = {resul}')
-#     case '-':
-#         resul = number1 - number2
-#         print(f'{number1} - {number2} = {resul}')
-#     case '*':
-#         resul = number1 * number2
-#         print(f'{number1} * {number2} = {resul}')
-#     case '/':
-#         resul = number1 / number2
-#         print(f'{number1} / {number2} = {resul}')
+#     for i in expressoes:
+#         if i == operador:
+#             operacao = operador
+        
+#     try:
+#         match operacao:
+#             case '+':
+#                 resul = number1 + number2
+#                 print(f'{number1} + {number2} = {resul}')
+#             case '-':
+#                 resul = number1 - number2
+#                 print(f'{number1} - {number2} = {resul}')
+#             case '*':
+#                 resul = number1 * number2
+#                 print(f'{number1} * {number2} = {resul}')
+#             case '/':
+#                 resul = number1 / number2
+#                 print(f'{number1} / {number2} = {resul}')
+#     except UnboundLocalError:
+#         print('Operação inválida')
+#     except ZeroDivisionError:
+#         print('Operação não pode dividir por zero')
+
+# calcular()
 
 # 2)Crie um dicionário com informações sobre um aluno (por exemplo, nome, idade, notas). Em seguida, solicite ao usuário uma chave
 # para acessar no dicionário. Caso a chave não exista, trate o erro e informe quais chaves estão disponíveis.
 
+dicio_aluno = {
+    'nome' : 'Fulano',
+    'idade' : '18',
+    'nota' : '5.0'
+}
+
+name = input('Digite a chave >>> ')
+
+for i in dicio_aluno:
+    if i == name:
+        nameVerifica = name
+    
+if name in dicio_aluno:
+        print(f'Valor >>> {dicio_aluno[name]}')
+
+try:
+    nameVerifica not in dicio_aluno
+
+except NameError:
+    print('Chave Dicionario invalida')
+    print(f'Chaves disponiveis >>> {list(dicio_aluno)}')
+        
 # 3)Solicite ao usuário que insira seu peso e altura. Calcule o IMC, mas trate possíveis erros, como entradas inválidas ou divisões
 # por zero. Garanta que o programa sempre informe o status do processo no finall
 
