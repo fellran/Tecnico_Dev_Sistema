@@ -1,0 +1,20 @@
+[
+    {
+        "num1": 5.0,
+        "num2": 6.0,
+        "operacao": "+",
+        "resultado": 11.0
+    },
+    {
+        "num1": 8.0,
+        "num2": 9.0,
+        "operacao": "*",
+        "resultado": 72.0
+    },
+    {
+        "num1": 8.0,
+        "num2": 9.0,
+        "operacao": "/",
+        "resultado": 0.8888888888888888
+    }
+]
