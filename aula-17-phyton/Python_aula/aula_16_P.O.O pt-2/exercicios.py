@@ -1,22 +1,15 @@
+from classes import Motorista
+
 # Crie um class motorista e um class carro, associe o carro ao motorista e possibilite que ele acelere o carro e também acrescente 
 # algo ao porta malas
 
-class Motorista:
-    def __init__(self,nome):
-        self.nome = nome
+motorista1 = Motorista('Gilson')
+motorista1.carro('Fiat', 'Uno', 'Branco', 'TGF987')
+motorista1.acelerar(160)
+motorista1.itemPortaMala('3')
 
-class Carro:
-    def __init__(self, marca,modelo,cor,placa):
-        self.marca = marca
-        self.modelo = modelo
-        self.cor = cor
-        self.placa = placa
-    
-    def acelerarCarro(self,acelerar):
-        self.acelerar = acelerar
 
-motorista = Motorista('Gilson')
-carro = Carro('Fiat', 'Uno', 'Branco', '43RFU')
+motorista2 = Motorista('Jozimar')
+motorista2.carro('Fiat', 'Palio', 'Prata', 'RFD987')
 
-print(motorista.nome)
-print(vars(carro))
+print(vars(motorista1))
