@@ -10,7 +10,7 @@
 <Alinhamento_h Valor="60"/>
 <Zoom Valor="75"/>
 <Fonte Estilo="1" Nome="Arial" Tamanho="12"/>
-<Localizacao Left="35" Top="35"/>
+<Localizacao Left="30" Top="52"/>
 <Realce Valor="false"/>
 </InfoDiagrama>
 <Texto ID="2">
@@ -333,8 +333,8 @@ descrição.</Texto>
 <Largura Valor="1"/>
 <Ligacoes PontaA="43" PontaB="6"/>
 <Pontos>
-<Ponto Left="1030" Top="715"/>
-<Ponto Left="1046" Top="715"/>
+<Ponto Left="1032" Top="716"/>
+<Ponto Left="1046" Top="716"/>
 <Ponto Left="1046" Top="425"/>
 </Pontos>
 <Cardinalidade ID="44">
@@ -352,7 +352,7 @@ descrição.</Texto>
 </Cardinalidade>
 </Ligacao>
 <Relacionamento ID="43">
-<Bounds Height="50" Left="883" Top="693" Width="150"/>
+<Bounds Height="50" Left="885" Top="694" Width="150"/>
 <DisablePainted Valor="false"/>
 <Texto>Emprestado</Texto>
 <Observacao/>
@@ -374,9 +374,9 @@ descrição.</Texto>
 <Ligacoes PontaA="7" PontaB="43"/>
 <Pontos>
 <Ponto Left="662" Top="716"/>
-<Ponto Left="771" Top="716"/>
-<Ponto Left="771" Top="715"/>
-<Ponto Left="880" Top="715"/>
+<Ponto Left="772" Top="716"/>
+<Ponto Left="772" Top="716"/>
+<Ponto Left="882" Top="716"/>
 </Pontos>
 <Cardinalidade ID="46">
 <Bounds Height="15" Left="672" Top="703" Width="36"/>
@@ -1061,8 +1061,10 @@ descrição.</Texto>
 <Largura Valor="1"/>
 <Ligacoes PontaA="113" PontaB="10"/>
 <Pontos>
-<Ponto Left="126" Top="325"/>
+<Ponto Left="125" Top="325"/>
 <Ponto Left="116" Top="325"/>
+<Ponto Left="116" Top="351"/>
+<Ponto Left="116" Top="351"/>
 <Ponto Left="116" Top="370"/>
 </Pontos>
 </Ligacao>
