@@ -1,0 +1,25 @@
+CREATE DATABASE IF NOT EXISTS db_familia CHARSET utf8mb4 COLLATE utf8mb4_general_ci; 
+
+USE db_familia;
+
+CREATE TABLE IF NOT EXISTS tb_mae(
+	id_mae INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL
+)AUTO_INCREMENT = 1;
+
+CREATE TABLE IF NOT EXISTS tb_pai(
+	id_pai INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL
+)AUTO_INCREMENT = 1;
+
+CREATE TABLE IF NOT EXISTS tb_filho(
+	id_filho INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    id_pai INT,
+    id_mae INT NOT NULL,
+    
+    CONSTRAINT fk_pai_id FOREIGN KEY (id_pai) REFERENCES tb_pai(id_pai),
+    CONSTRAINT fk_mae_id FOREIGN KEY (id_mae) REFERENCES tb_mae(id_mae)
+);
+
+
