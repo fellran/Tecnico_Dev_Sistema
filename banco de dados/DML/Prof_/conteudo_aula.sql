@@ -19,11 +19,6 @@ CREATE TABLE cliente(
     senha varchar(255) NOT NULL
 );
 describe cliente;
-
--- DML
-
-
-
 -- DQL
 SELECT * FROM cliente;
 

@@ -31,7 +31,26 @@ CREATE TABLE IF NOT EXISTS tb_servico (
 INSERT INTO tb_servico (nome, valor) VALUES ('Lavagem', 50.80), ('Corte', 20.00), ('Hidrataçâo', 70.00), ('Barba', 20.00), ('Sobrancelha', 50.00);
 
 SELECT * FROM tb_servico;
+SELECT * FROM cliente WHERE id = 1;
+SELECT nome FROM cliente WHERE id = 1;
 
+
+/*
+Exercicio - 2
+
+- pesquise tdos os serviços cadastrados
+- pesquise apenas o servio de id = 3
+- pesquise tdos os serviços maiores que R$ 30.00
+- pesquise todos s serviços, porem, apenas a coluna nome
+*/
+
+SELECT * FROM tb_servico;
+
+SELECT * FROM tb_servico WHERE id_servico = 3;
+
+SELECT * FROM tb_servico WHERE valor > 30.00;
+
+SELECT nome AS servico FROM tb_servico; 
 
 
 
