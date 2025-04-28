@@ -15,7 +15,7 @@ public class SweetCase {
         System.out.println(">>> Escolha uma das opcoes <<<");
         System.out.println("[1] - Par ou impar");
         System.out.println("[2] - Bhaskara");
-        System.out.print("[3] - Maior idade\n>>");
+        System.out.print("[3] - Maior idade\n>> ");
         escolha = input.nextInt();
       
          if (escolha <= 3){ 
@@ -34,7 +34,9 @@ public class SweetCase {
                                 System.out.printf("Numero Impar >>> " + numero);
                             }
                         
-                        JOptionPane.showMessageDialog(null, numero, "Programa impar ou par", JOptionPane.INFORMATION_MESSAGE);
+                        String mensagemTela = String.format("O numero >> %i", numero); 
+                        
+                        JOptionPane.showMessageDialog(null, mensagemTela , "Programa impar ou par", JOptionPane.INFORMATION_MESSAGE);
                         
                     break;
                     
