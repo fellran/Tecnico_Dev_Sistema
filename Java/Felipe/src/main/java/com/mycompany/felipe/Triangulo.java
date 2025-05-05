@@ -1,7 +1,8 @@
 package com.mycompany.felipe;
 
+
 public class Triangulo {
-    int a,b,c;
+    private int a,b,c;
 
     public int getA() {
         return a;
@@ -27,9 +28,13 @@ public class Triangulo {
         this.c = c;
     }
     
-    public int verificar(){
+    public void verificar(){
         if(a == b && a == c && b == a && b == c && c == a && c == b){
             System.out.println("Triangulo equilatero");
+        }else if(a == b || a == c || b == a || b == c || c == a || c == b) {
+        	System.out.println("Triangulo isoceles");
+        }else {
+        	System.out.println("Triangulo escaleno");
         }
     }
 }

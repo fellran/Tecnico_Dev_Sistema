@@ -1,7 +1,7 @@
 package com.mycompany.felipe;
 
 public class ParImpar {
-    int n1, n2;
+    private int n1;
 
     public int getN1() {
         return n1;

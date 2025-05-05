@@ -1,13 +1,7 @@
 package com.mycompany.felipe;
 
 public class bhaskara {
-   double A;
-   double B;
-   double C;
-   double Delta;
-   double X1;
-   double X2;
-
+   private double A, B, C;
    
    
     public double getA() {
