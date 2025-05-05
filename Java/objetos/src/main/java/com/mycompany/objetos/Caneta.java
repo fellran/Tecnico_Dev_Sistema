@@ -1,10 +1,10 @@
 package com.mycompany.objetos;
 
 public class Caneta {
-    String modelo;
-    String cor;
-    float ponta;
-    int carga;
+    private String modelo;
+    private String cor;
+    private float ponta;
+    private int carga;
     
     public String getModelo() {
         return modelo;
