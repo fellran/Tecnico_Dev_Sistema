@@ -5,31 +5,42 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Felipe {
 
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        ParImpar parImpar = new ParImpar();
         // BHASKARA
         bhaskara bhas = new bhaskara();
         
-        bhas.setA(1);
-        bhas.setB(5);
-        bhas.setC(-14);
+        System.out.println(">> Formula de Bhaskara <<");
+        System.out.print("Digite o valor de A \n >>");
+        bhas.setA(input.nextInt());
+        System.out.print("Digite o valor de B \n >>");
+        bhas.setB(input.nextInt());
+        System.out.print("Digite o valor de C \n obs: precisa valor negativo \n >>");
+        bhas.setC(input.nextInt());
         
         bhas.CalcularRaiz();
         
         // PARA OU IMPAR
-        ParImpar parImpar = new ParImpar();
+        System.out.println("Digite um valor");
         
-        parImpar.setN1(5);
+        parImpar.setN1(input.nextInt());
         parImpar.verificarImparPar();
         
         // TRIANGULO
         Triangulo tri = new Triangulo();
         
-        tri.setA(20);
-        tri.setB(5);
-        tri.setC(10);
+        System.out.println(">> Descubra o triangulo << ");
+        System.out.print("Digite o primeiro lado do triangulo \n >> ");
+        tri.setA(input.nextInt());
+        System.out.print("Digite o segundo lado do triangulo \n >> ");
+        tri.setB(input.nextInt());
+        System.out.print("Digite o terceiro lado do triangulo \n >>");
+        tri.setC(input.nextInt());
         
         tri.verificar();
         

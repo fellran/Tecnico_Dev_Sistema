@@ -27,22 +27,6 @@ public class bhaskara {
     public void setC(double C) {
         this.C = C;
     }
-
-    public double getX1() {
-        return X1 = ((-(B) + Math.sqrt(Delta)) / 2 * A);
-    }
-
-    public void setX1(double X1) {
-        this.X1 = X1;
-    }
-
-    public double getX2() {
-        return X2;
-    }
-
-    public void setX2(double X2) {
-        this.X2 = X2;
-    }
     
     public double Delta(){
         return (Math.pow(B, 2)+(-4*(A*C)));

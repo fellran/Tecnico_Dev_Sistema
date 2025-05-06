@@ -1,7 +1,7 @@
 package com.mycompany.felipe;
 
 public class ParImpar {
-    private int n1;
+    public int n1;
 
     public int getN1() {
         return n1;
@@ -11,15 +11,12 @@ public class ParImpar {
         this.n1 = n1;
     }
     
-    public int verificarImparPar(){
+    public void verificarImparPar(){
         
-        int numero = n1;
-        
-        if (numero %2 == 0){
-            System.out.println("Numero par >> " + numero);
+        if (n1 %2 == 0){
+            System.out.println("Numero par >> " + n1);
         }else{
-            System.out.println("Numero impar >> " + numero);
+            System.out.println("Numero impar >> " + n1);
         }
-        return numero;
     }
 }
