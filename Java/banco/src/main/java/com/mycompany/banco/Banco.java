@@ -8,6 +8,7 @@ public class Banco {
         Conta jubileu = new Conta();
         
         jubileu.abrirConta();
-        jubileu.fecharConta();
+        System.out.print(jubileu.getSaldo());
+        jubileu.sacar();
     }
 }

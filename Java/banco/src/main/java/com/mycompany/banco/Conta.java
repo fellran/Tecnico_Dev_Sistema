@@ -87,7 +87,7 @@ public class Conta {
             case 2:
                 this.saldo = 150;
                 this.status = true;
-                System.out.print("Conta Corrente selecionada \n voce recebeu um saldo de R$:"+this.getSaldo()+ "\n \n Conta Ativada \n Nome : "+this.donoConta+"\n Numero da Conta :"+this.getNumConta()+"\n Saldo : "+this.getSaldo()+"\n \n");
+                System.out.print("Conta Corrente selecionada \n voce recebeu um saldo de R$:"+this.getSaldo()+ "\n \n Conta status :  Ativada \n Nome : "+this.donoConta+"\n Numero da Conta :"+this.getNumConta()+"\n Saldo : "+this.getSaldo()+"\n \n");
                 break;
             default:
                 System.out.println("Informe apenas 1 e 2");
@@ -97,7 +97,57 @@ public class Conta {
     
     // Fechar conta
     public void fecharConta(){
-        System.out.println(this.getDonoConta());
+    	this.setDonoConta(null);
+    	this.status = false;
+    	System.out.println("Conta fechada.");
     }
+    
+    // Sacar
+    
+    public void sacar() {
+    	double novoSaldo;  
+    	System.out.println(">> Sacar <<");
+    	System.out.print("Digite o valor do saque \n >> ");
+    	double qnt = input.nextDouble();
+    	novoSaldo = this.saldo - qnt;
+    	if(this.getSaldo() < novoSaldo) {
+    		System.out.print("saque bem sucedido \n Saldo : "+ this.getSaldo() + "\n Valor de saque : " + qnt + 
+    				"\n Saldo atual : " + novoSaldo);
+    		this.saldo = novoSaldo;
+    	}else {
+    		System.out.print("Error não pode sacar mais do que está depositado");
+    	}
+    }
+    
+    // Depositar
+    public void depositar(double qntDeposito) {
+    	this.saldo = this.saldo + qntDeposito;
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
