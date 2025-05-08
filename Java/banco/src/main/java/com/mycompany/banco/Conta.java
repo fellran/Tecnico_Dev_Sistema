@@ -61,7 +61,7 @@ public class Conta {
     }
 
     
-    // abrir conta
+    // ABRIR CONTA
     
     public String abrirConta(){
         
@@ -81,18 +81,23 @@ public class Conta {
             case 1:
                 this.saldo = 50;
                 this.status = true;
-                System.out.print("Conta Poupanca selecionada \n voce recebeu um saldo de R$:" + this.getSaldo() + "\n \n Conta Ativada \n Nome : "+this.donoConta+"\n Numero da Conta :"+this.getNumConta()+"\n Saldo : "+this.getSaldo());
+                System.out.print("Conta Poupanca selecionada \n voce recebeu um saldo de R$:" + this.getSaldo() + "\n \n Conta Ativada \n Nome : "+this.donoConta+"\n Numero da Conta :"+this.getNumConta()+"\n Saldo : "+this.getSaldo()+ "\n \n");
 ;                break;
             
             case 2:
                 this.saldo = 150;
                 this.status = true;
-                System.out.print("Conta Corrente selecionada \n voce recebeu um saldo de R$:"+this.getSaldo()+ "\n \n Conta Ativada \n Nome : "+this.donoConta+"\n Numero da Conta :"+this.getNumConta()+"\n Saldo : "+this.getSaldo());
+                System.out.print("Conta Corrente selecionada \n voce recebeu um saldo de R$:"+this.getSaldo()+ "\n \n Conta Ativada \n Nome : "+this.donoConta+"\n Numero da Conta :"+this.getNumConta()+"\n Saldo : "+this.getSaldo()+"\n \n");
                 break;
             default:
                 System.out.println("Informe apenas 1 e 2");
         }
         return response;
+    }
+    
+    // Fechar conta
+    public void fecharConta(){
+        System.out.println(this.getDonoConta());
     }
 }
 
