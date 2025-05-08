@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class Felipe {
 
@@ -18,15 +20,16 @@ public class Felipe {
         System.out.println(">> Formula de Bhaskara <<");
         System.out.print("Digite o valor de A \n >>");
         bhas.setA(input.nextInt());
-        System.out.print("Digite o valor de B \n >>");
+        System.out.print("Digite o valor de B \n >> ");
         bhas.setB(input.nextInt());
-        System.out.print("Digite o valor de C \n obs: precisa valor negativo \n >>");
+        System.out.print("Digite o valor de C \n obs: precisa valor negativo \n >> ");
         bhas.setC(input.nextInt());
         
         bhas.CalcularRaiz();
         
         // PARA OU IMPAR
-        System.out.println("Digite um valor");
+        System.out.println(">> PAR OU IMPAR <<");
+        System.out.println("Digite um valor \n >> ");
         
         parImpar.setN1(input.nextInt());
         parImpar.verificarImparPar();
@@ -39,18 +42,61 @@ public class Felipe {
         tri.setA(input.nextInt());
         System.out.print("Digite o segundo lado do triangulo \n >> ");
         tri.setB(input.nextInt());
-        System.out.print("Digite o terceiro lado do triangulo \n >>");
+        System.out.print("Digite o terceiro lado do triangulo \n >> ");
         tri.setC(input.nextInt());
         
         tri.verificar();
         
+        // CLASSE PESSOA
         
-        String texto = "Felipe morador de rua";
+        System.out.println(">> Quantas pessoas cadastrar <<");
+        int qtd = input.nextInt();
+        input.nextLine();
+        
+        Pessoa[] pessoas = new Pessoa[qtd];
+        
+        for(int i = 0; i > qtd; i++){
+            System.out.println("\n Cadastro de Pessoa" + (i + 1) + "--");
+            
+            System.out.println("Nome \n >> ");
+            String nome = input.nextLine();
+            
+            System.out.println("CPF \n >> ");
+            String cpf = input.nextLine();
+            
+            System.out.println("Data de nascimento (AAA-MM-DD) \n >> ");
+            String dt_nascimentoStr = input.nextLine();
+            LocalDate dt_nascimento = LocalDate.parse(dt_nascimentoStr); 
+            
+            System.out.println("Altura (em metrs)");
+            double altura = input.nextDouble();
+            
+            System.out.println("Peso (Kg)");
+            double peso = input.nextDouble();
+            
+            pessoas[i] = new Pessoa(nome, cpf, dt_nascimento, altura, peso);
+        }
+        
+        try {
+            FileWriter write = new FileWriter("Pessoas.txt");
+            write.write("Nome;cpf;dt_nascimento;Altura;Peso; IMC;MaiorIdade \n");
+            for(Pessoa p : pessoas){
+                write.write(p.toCSV()+"\n");
+            }
+            System.out.println("\nArquivo 'pessoas.txt' salvo cm sucesso");
+            write.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        
+        // END
+        
+        String result = String.valueOf(parImpar.getN1());
         String caminhoArquivo = "Felipe.txt";
         // ESCREVENDO
         try {
             BufferedWriter escritor = new BufferedWriter(new FileWriter(caminhoArquivo));
-            escritor.write(texto);
+            escritor.write(result);
             escritor.close();
             System.err.println("Texto salvo com sucesso em " + caminhoArquivo);
         } catch (IOException e) {
