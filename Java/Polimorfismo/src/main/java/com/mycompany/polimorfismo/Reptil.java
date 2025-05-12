@@ -4,9 +4,11 @@ package com.mycompany.polimorfismo;
 public class Reptil extends Animal{
     private String CorEscama;
 
-    public Reptil(String CorEscama) {
+    public Reptil(String CorEscama, double peso, int idade, String membro) {
+      
         this.CorEscama = CorEscama;
     }
+
 
     public String getCorEscama() {
         return CorEscama;

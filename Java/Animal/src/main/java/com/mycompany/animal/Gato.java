@@ -1,6 +1,6 @@
 package com.mycompany.animal;
 
-public class Gato {
+public class Gato extends Animal{
         protected String nome;
         
         public void emitirSom(){
