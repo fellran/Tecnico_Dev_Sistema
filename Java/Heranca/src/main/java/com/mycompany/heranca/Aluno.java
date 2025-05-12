@@ -38,6 +38,8 @@ public class Aluno extends Pessoa{
     }
     
     public void cancelarMatricula(){
+    	setMatr(0);
+    	setCurso(null);
         System.out.println("matricula cancelada");
     }
 

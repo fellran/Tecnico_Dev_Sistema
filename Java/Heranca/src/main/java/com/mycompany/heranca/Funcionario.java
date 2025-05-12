@@ -1,7 +1,10 @@
 package com.mycompany.heranca;
 
+import java.util.Scanner;
+
 public class Funcionario extends Pessoa{
-    String setor, trabalhando;
+    private String setor, trabalhando;
+    Scanner input = new Scanner(System.in);
     
     // Constructor
 
@@ -32,11 +35,22 @@ public class Funcionario extends Pessoa{
     // Metodos
     
     public void mudarTrabalho(){
-        System.out.println("");
+        System.out.println(" Mudar Setor\n>> ");
+        String lerSetor = input.nextLine();
+        setSetor(lerSetor);
+        System.out.format("Setor mudado : %s", getSetor());
+        
     }
 
     @Override
     public void fazerAniv() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+	@Override
+	public String toString() {
+		return super.toString() + setor + ", trabalhando=" + trabalhando + ", input=" + input + "]";
+	}
 }
+
+

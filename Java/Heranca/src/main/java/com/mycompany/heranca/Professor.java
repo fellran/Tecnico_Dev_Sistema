@@ -1,8 +1,11 @@
 package com.mycompany.heranca;
 
+import java.util.Scanner;
+
 public class Professor extends Pessoa{
-    String especialidade;
-    Double salario;
+    private String especialidade;
+    private Double salario;
+    Scanner input = new Scanner(System.in);
     
     // Constructor
 
@@ -33,11 +36,21 @@ public class Professor extends Pessoa{
     // Metodos
     
     public void receberAumento(){
-        System.out.println("");
+        System.out.print("Receber aumento\n>> ");
+        double lerAumento = input.nextDouble();
+        salario = salario += lerAumento;
+        System.out.print("Aumento recebido de : " + lerAumento + "\nNovo Salario : " + salario + "\n\n");
     }
 
     @Override
     public void fazerAniv() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+	@Override
+	public String toString() {
+		return super.toString() + especialidade + ", salario=" + salario + ", input=" + input + "]";
+	}
+    
+    
 }
