@@ -44,7 +44,9 @@ public class Funcionario extends Pessoa{
 
     @Override
     public void fazerAniv() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println(getNome() + " está fazendo aniversário!");
+        setIdade(getIdade() + 1);
+        System.out.println(getNome() + " agora tem " + getIdade() + " anos.");
     }
 
 	@Override
