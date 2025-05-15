@@ -1,0 +1,19 @@
+CREATE DATABASE IF NOT EXISTS db_java_bank COLLATE utf8mb4_general_ci CHARSET utf8mb4;
+
+USE db_java_bank;
+
+CREATE TABLE IF NOT EXISTS tb_pessoa(
+	id_pessoa INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(20) UNIQUE NOT NULL,
+    idade SMALLINT NOT NULL,
+    sexo VARCHAR(100) NOT NULL
+)AUTO_INCREMENT = 1; 
+
+CREATE TABLE IF NOT EXISTS tb_usuario (
+	id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100),
+    telefone VARCHAR(20),
+    tipo_usuario VARCHAR(50)
+)AUTO_INCREMENT = 1;
