@@ -9,3 +9,6 @@ CREATE TABLE IF NOT EXISTS tb_usuario(
     telefone VARCHAR(20),
     tipo_usuario VARCHAR(50)
 )AUTO_INCREMENT = 1;
+
+SELECT * FROM tb_usuario;
+

@@ -21,19 +21,19 @@ public class Biblioteeca {
 //            System.out.println("Deu ruim");
 //        }
 
-        UsuarioDAO usuariodao = new UsuarioDAO();
+       UsuarioDAO usuariodao = new UsuarioDAO();
+       
+       Usuario usuario = new Usuario(0, "Creusa", "creusa1@gmail.com", "61-995623015", "de mentira");
 
-        // Usuario usuario = new Usuario(0,"Jubileu", "jubileu@gmail.com", "61-99949954", "De mentira");
+        //Usuario usuario = new Usuario(0,"Jubileu", "jubileu@gmail.com", "61-99949954", "De mentira");
         
-        Usuario[] usuarios = new Usuario[6];
+        // Usuario[] usuarios = new Usuario[6];
         
-        while (true) {            
-            
-        }
+        // Criar uma lista de usuarios sem um limitação ou seja talvez eu possa usa o for ou while
         
         try {
             usuariodao.criaUsuario(usuario);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Deu ruim" + e.getMessage());
         }
     }  
