@@ -5,6 +5,7 @@
 package concessionaria;
 
 import java.sql.SQLException;
+import java.util.Scanner;
 /**
  *
  * @author ead
@@ -21,9 +22,48 @@ public class Concessionaria {
         
         CarroDAO carrodao = new CarroDAO();
         
+        Scanner input = new Scanner(System.in);
+        
         // insert 
         
         // marca, ano, tipo, portas
+        
+        System.out.print("Banco de dados\nEscolha uma opção\n[1] Inserir\n[2] Atualizar\n[3] Deletar\n>> ");
+        
+        int opcao = input.nextInt();
+        input.nextLine();
+        
+        switch (opcao) {
+		case 1: {
+			
+                    System.out.print("Marca : ");
+		    String marca = input.nextLine();
+			
+			System.out.print("Ano do Carro : ");
+			int ano = input.nextInt();
+			input.nextLine();
+			
+			System.out.print("Tipo : ");
+			String tipo = input.nextLine();
+			
+			System.out.print("Portas : ");
+			String portas = input.nextLine();
+			
+	        Carro carro = new Carro(marca, ano, tipo, portas);
+	        
+	        try {
+	            carrodao.createCarro(carro);
+                    System.out.println("Insert feito");
+                    
+	        } catch (SQLException e) {
+	            System.out.println("Deu ruim" + e.getMessage());
+	        }
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Opcao invalida" + opcao);
+		}
+        
         
         //Carro carro = new Carro("Harley", 1979, "206", "4");
         
@@ -46,11 +86,11 @@ public class Concessionaria {
         
         // delete
         
-        try {
-            carrodao.deleteCarro(1);
-        } catch (SQLException erro) {
-            System.out.println("Erro" + erro.getMessage());
-        }
+        //try {
+        //    carrodao.deleteCarro(1);
+        //} catch (SQLException erro) {
+        //    System.out.println("Erro" + erro.getMessage());
+        //}
         
         
 //        if (conexao.connectDB() != null){
@@ -58,6 +98,6 @@ public class Concessionaria {
 //        }else {
 //            System.out.println("Deu ruim");
 //        }
-    }
+   }
     
 }
