@@ -3,12 +3,12 @@ package concessionaria;
 public class Carro {
     private String marca;
     private int ano;
-    private boolean tipo;
+    private String tipo;
     private String portas;
     
     // construtor
 
-    public Carro(String marca, int ano, boolean tipo, String portas) {
+    public Carro(String marca, int ano, String tipo, String portas) {
         this.marca = marca;
         this.ano = ano;
         this.tipo = tipo;
@@ -33,14 +33,6 @@ public class Carro {
         this.ano = ano;
     }
 
-    public boolean isTipo() {
-        return tipo;
-    }
-
-    public void setTipo(boolean tipo) {
-        this.tipo = tipo;
-    }
-
     public String getPortas() {
         return portas;
     }
@@ -48,6 +40,16 @@ public class Carro {
     public void setPortas(String portas) {
         this.portas = portas;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
     
     
 }

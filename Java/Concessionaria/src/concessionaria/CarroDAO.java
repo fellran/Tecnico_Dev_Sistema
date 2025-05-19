@@ -10,7 +10,7 @@ public class CarroDAO {
     }
     
     public void createCarro(Carro carro) throws SQLException{
-        String sql = "insert";
+        String sql = "INSERT INTO tb_carro (marca, ano, tipo, portas) VALUES (?, ?, ?, ?);";
         
         PreparedStatement stmt;
         stmt = null;
@@ -20,7 +20,7 @@ public class CarroDAO {
             
             stmt.setString(1, carro.getMarca());
             stmt.setInt(2, carro.getAno());
-            stmt.setBoolean(3, carro.isTipo());
+            stmt.setString(3, carro.getTipo());
             stmt.setString(4, carro.getPortas());
             
             stmt.executeUpdate();
@@ -29,6 +29,59 @@ public class CarroDAO {
             
         } catch (SQLException erro) {
             System.out.println("Deu ruim " + erro.getMessage());
+        }
+        
+        finally{
+            if(stmt != null)
+                stmt.close();
+        }
+    }
+    
+    // update
+    public void updateCarro(Carro carro) throws SQLException{
+        String sql = "UPDATE tb_carro SET marca = ?, ano = ?, tipo = ?, portas = ?  WHERE id_carro = 1";
+        
+        PreparedStatement stmt;
+        stmt = null;
+        
+        try {
+            stmt = connection.prepareStatement(sql);
+            
+            stmt.setString(1, carro.getMarca());
+            stmt.setInt(2, carro.getAno());
+            stmt.setString(3, carro.getTipo());
+            stmt.setString(4, carro.getPortas());
+            
+            stmt.executeUpdate();
+            
+            System.out.println("Update feito");
+            
+        } catch (SQLException erro) {
+            System.out.println("Deu erro" + erro.getMessage());
+        }
+        
+        finally{
+            if(stmt != null)
+                stmt.close();
+        }
+    }
+    
+    public void deleteCarro(int id) throws SQLException{
+        String sql = "DELETE FROM tb_carro WHERE id_carro = ?";
+        
+        PreparedStatement stmt;
+        stmt = null;
+        
+        try {
+            stmt = connection.prepareStatement(sql);
+            
+            stmt.setInt(1, id);
+            
+            stmt.executeUpdate();
+            
+            System.out.println("Delete feito");
+        } catch (Exception erro) {
+            System.out.println("Deu Erro" + erro.getMessage());
         }
         
         finally{

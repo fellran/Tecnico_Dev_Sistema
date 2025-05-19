@@ -5,6 +5,7 @@
 package biblioteeca;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class Biblioteeca {
 
@@ -23,7 +24,7 @@ public class Biblioteeca {
 
        UsuarioDAO usuariodao = new UsuarioDAO();
        
-       Usuario usuario = new Usuario(0, "Creusa", "creusa1@gmail.com", "61-995623015", "de mentira");
+       //Usuario usuario = new Usuario(0, "Creusa", "creusa1@gmail.com", "61-995623015", "de mentira");
 
         //Usuario usuario = new Usuario(0,"Jubileu", "jubileu@gmail.com", "61-99949954", "De mentira");
         
@@ -31,10 +32,29 @@ public class Biblioteeca {
         
         // Criar uma lista de usuarios sem um limitação ou seja talvez eu possa usa o for ou while
         
+        //try {
+        //    usuariodao.criaUsuario(usuario);
+        //} catch (SQLException e) {
+        //    System.out.println("Deu ruim" + e.getMessage());
+        //}
+        
         try {
-            usuariodao.criaUsuario(usuario);
-        } catch (SQLException e) {
-            System.out.println("Deu ruim" + e.getMessage());
+            List<Usuario> usuarios = usuariodao.listarUsuarios();
+            
+            if(usuarios.isEmpty()){
+                System.out.println("Vazia como o o coração da paloma");
+            }else{
+                for(Usuario usuario : usuarios){
+                    System.out.println("id" + usuario.getId_usuario());
+                    System.out.println("nome" + usuario.getNome());
+                    System.out.println("email" + usuario.getEmail());
+                    System.out.println("telefone" + usuario.getTelefone());
+                    System.out.println("tipo usuario" + usuario.getTipo_usuario());
+                    System.out.println("-----------------------------------------");
+                }
+            }
+        } catch (SQLException erro) {
+            System.out.println("erro " + erro.getMessage());
         }
     }  
 }
