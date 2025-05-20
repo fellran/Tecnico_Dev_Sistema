@@ -1,6 +1,7 @@
 package concessionaria;
 
 public class Carro {
+    private int id_carro;
     private String marca;
     private int ano;
     private String tipo;
@@ -47,6 +48,14 @@ public class Carro {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public int getId_carro() {
+        return id_carro;
+    }
+
+    public void setId_carro(int id_carro) {
+        this.id_carro = id_carro;
     }
     
     

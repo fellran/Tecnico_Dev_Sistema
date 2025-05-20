@@ -7,15 +7,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioDAO {
+public class Padaria{
     private Connection connection;
 
-    public UsuarioDAO() {
+    public Padaria() {
         this.connection = new ConnectionFactory().connectDB();
     }
     
     public void criaUsuario(Usuario usuario) throws SQLException{
-        String sql = "INSERT INTO tb_usuario (nome, email, telefone, tipo_usuario) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO tb_usuario (nome, email, telefone) VALUES(?,?,?)";
         
         PreparedStatement stmt;
         stmt = null;
@@ -26,7 +26,6 @@ public class UsuarioDAO {
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getEmail());
             stmt.setString(3, usuario.getTelefone());
-            stmt.setString(4, usuario.getTipo_usuario());
             
             stmt.executeUpdate();
             
@@ -41,8 +40,8 @@ public class UsuarioDAO {
         
     }
     
-    public List<Usuario> listarUsuarios() throws SQLException {
-        List<Usuario> lista = new ArrayList<>();
+    public List<Padaria> listarUsuarios() throws SQLException {
+        List<Padaria> lista = new ArrayList<>();
         
         String sql = "SELECT * FROM tb_usuario";
         

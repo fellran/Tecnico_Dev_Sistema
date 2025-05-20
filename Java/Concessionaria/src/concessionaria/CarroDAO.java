@@ -39,7 +39,7 @@ public class CarroDAO {
     
     // update
     public void updateCarro(Carro carro) throws SQLException{
-        String sql = "UPDATE tb_carro SET marca = ?, ano = ?, tipo = ?, portas = ?  WHERE id_carro = 1";
+        String sql = "UPDATE tb_carro SET marca = ?, ano = ?, tipo = ?, portas = ?  WHERE id_carro = ?";
         
         PreparedStatement stmt;
         stmt = null;
@@ -47,10 +47,13 @@ public class CarroDAO {
         try {
             stmt = connection.prepareStatement(sql);
             
+            
+            
             stmt.setString(1, carro.getMarca());
             stmt.setInt(2, carro.getAno());
             stmt.setString(3, carro.getTipo());
             stmt.setString(4, carro.getPortas());
+            stmt.setInt(5, carro.getId_carro());
             
             stmt.executeUpdate();
             
@@ -74,6 +77,7 @@ public class CarroDAO {
         
         try {
             stmt = connection.prepareStatement(sql);
+            
             
             stmt.setInt(1, id);
             
