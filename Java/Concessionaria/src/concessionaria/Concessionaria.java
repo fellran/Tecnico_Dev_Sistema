@@ -1,43 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package concessionaria;
+
+import java.util.Scanner;
 
 import java.sql.SQLException;
 import java.util.Scanner;
-/**
- *
- * @author ead
- */
+
 public class Concessionaria {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
-        
-        ConnectionFactory conexao = new ConnectionFactory();
         
         CarroDAO carrodao = new CarroDAO();
         
         Scanner input = new Scanner(System.in);
+        int opcao = 0;
         
-        // insert 
-        
-        // marca, ano, tipo, portas
-        
-        System.out.print("Banco de dados\nEscolha uma opcao\n[1] Inserir\n[2] Atualizar\n[3] Deletar\n>> ");
-        
-        int opcao = input.nextInt();
-        input.nextLine();
-        
-        switch (opcao) {
-		case 1: {
-			
-                    System.out.print("Marca : ");
-		    String marca = input.nextLine();
+        while (opcao != 4) {   
+            
+            System.out.print("Banco de dados\nEscolha uma opcao\n[1] Inserir\n[2] Atualizar\n[3] Deletar\n[4] Exit\n>> ");
+            opcao = input.nextInt();
+            input.nextLine();
+            
+            switch (opcao) {
+                case 1: {
+			System.out.print("Marca : ");
+		    	String marca = input.nextLine();
 			
 			System.out.print("Ano do Carro : ");
 			int ano = input.nextInt();
@@ -49,42 +35,40 @@ public class Concessionaria {
 			System.out.print("Portas : ");
 			String portas = input.nextLine();
 			
-	        Carro carro = new Carro(marca, ano, tipo, portas);
+			Carro carro = new Carro(marca, ano, tipo, portas);
 	        
-	        try {
-	            carrodao.createCarro(carro);
-                    System.out.println("Insert feito");
+                    try {
+                        carrodao.createCarro(carro);
+                        System.out.println("Insert feito");
                     
-	        } catch (SQLException e) {
-	            System.out.println("Deu ruim" + e.getMessage());
-	        }
-			break;
-		}
-                
-                case 2: {
+                    } catch (SQLException e) {
+                        System.out.println("Deu ruim" + e.getMessage());
+                    }
+                    break;
+                }
+		
+		case 2: {
                     System.out.println("Update");
                     
                     System.out.print("Marca : ");
 		    String marca = input.nextLine();
 			
-			System.out.print("Ano do Carro : ");
-			int ano = input.nextInt();
-			input.nextLine();
+                    System.out.print("Ano do Carro : ");
+                    int ano = input.nextInt();
+                    input.nextLine();
 			
-			System.out.print("Tipo : ");
-			String tipo = input.nextLine();
+                    System.out.print("Tipo : ");
+                    String tipo = input.nextLine();
 			
-			System.out.print("Portas : ");
-			String portas = input.nextLine();
+                    System.out.print("Portas : ");
+                    String portas = input.nextLine();
                         
-                        System.out.println("Id_carro");
-                        int id_carro = input.nextInt();
+                    System.out.println("Id_carro");
+                    int id_carro = input.nextInt();
                         
-                        
-                    
                     Carro carro = new Carro(marca, ano, tipo, portas);
                     
-                        carro.setId_carro(id_carro);
+                    carro.setId_carro(id_carro);
                     
                     try {
                         carrodao.updateCarro(carro);
@@ -94,6 +78,7 @@ public class Concessionaria {
                     break;
                 }
                 
+                
                 case 3: {
                     
                     System.out.print("Deletar\nDigite o id_carro\n>> ");
@@ -101,16 +86,22 @@ public class Concessionaria {
                     
                     try {
                         carrodao.deleteCarro(id_carro);
-                        } catch (SQLException erro) {
-                            System.out.println("Erro" + erro.getMessage());
-                        }
-                    
+                        
+                    } catch (SQLException erro) {
+                    System.out.println("Erro" + erro.getMessage());
+                    }
                     break;
                 }
-              
-		default:
-			throw new IllegalArgumentException("Opcao invalida voce digito a opcao errada -> " + opcao);
-		}
-   }
-    
+        	
+                default:
+                    //throw new AssertionError();
+            }
+            
+            //System.out.print("Banco de dados\nEscolha uma opcao\n[1] Inserir\n[2] Atualizar\n[3] Deletar\n[4] Exit\n>> ");
+            //opcao = input.nextInt();
+            //input.nextLine();
+        }
+        
+        System.out.println("Banco Finalizado");
+    }
 }
