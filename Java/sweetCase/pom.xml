@@ -10,4 +10,5 @@
         <maven.compiler.release>24</maven.compiler.release>
         <exec.mainClass>com.mycompany.sweetcase.SweetCase</exec.mainClass>
     </properties>
+    <name>SweetCase</name>
 </project>
