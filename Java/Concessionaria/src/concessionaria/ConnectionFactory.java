@@ -12,7 +12,7 @@ public class ConnectionFactory {
         try {
             String url = "jdbc:mysql://localhost:3306/db_concessionaria?useSS1=false";
             String user = "root";
-            String password = "";
+            String password = "@Fe995077676";
             
             conn = DriverManager.getConnection(url, user, password);
         } catch (SQLException erro) {
