@@ -9,5 +9,7 @@ CREATE TABLE tb_carro(
     tipo VARCHAR(100)
 )AUTO_INCREMENT = 1;
 
+ALTER TABLE tb_carro ADD COLUMN portas SMALLINT;
+
 SELECT * FROM tb_carro;
 
