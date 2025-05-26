@@ -9,7 +9,7 @@ public class AlunoDAO {
         this.connection = new ConnectionFactory().connectDB();
     }
     
-    public void createCarro(Aluno aluno) throws SQLException{
+    public void createAluno(Aluno aluno) throws SQLException{
         String sql = "INSERT INTO tb_usuario (nome, cpf, sexo, endereco, curso, matricula) VALUES (?, ?, ?, ?, ?, ?);";
         
         PreparedStatement stmt;
@@ -19,7 +19,7 @@ public class AlunoDAO {
             stmt = connection.prepareStatement(sql);
             
             stmt.setString(1, aluno.getNome());
-            stmt.setInt(2, aluno.getCpf());
+            stmt.setString(2, aluno.getCpf());
             stmt.setString(3, aluno.getSexo());
             stmt.setString(4, aluno.getEndereco());
             stmt.setString(5, aluno.getCurso());
@@ -40,8 +40,7 @@ public class AlunoDAO {
     }
     
     // update
-    public void updateCarro(Aluno aluno) throws SQLException{
-        // int matricula, String curso, String nome, String endereco, String sexo, int cpf
+    public void updateAluno(Aluno aluno) throws SQLException{
         String sql = "UPDATE tb_usuario SET nome = ?, cpf = ?, sexo = ?, endereco = ?, curso = ?, matricula = ?  WHERE id_carro = ?";
         
         PreparedStatement stmt;
@@ -51,7 +50,7 @@ public class AlunoDAO {
             stmt = connection.prepareStatement(sql);
             
             stmt.setString(1, aluno.getNome());
-            stmt.setInt(2, aluno.getCpf());
+            stmt.setString(2, aluno.getCpf());
             stmt.setString(3, aluno.getSexo());
             stmt.setString(4, aluno.getEndereco());
             stmt.setString(5, aluno.getCurso());
@@ -71,7 +70,7 @@ public class AlunoDAO {
         }
     }
     
-    public void deleteCarro(int id) throws SQLException{
+    public void deleteAluno(int id) throws SQLException{
         String sql = "DELETE FROM tb_usuario WHERE id_carro = ?";
         
         PreparedStatement stmt;

@@ -7,7 +7,7 @@ public class Aluno extends Pessoa{
     
     // CONSTRUCTOR
     
-    public Aluno(int matricula, String curso, String nome, String endereco, String sexo, int cpf) {
+    public Aluno(int matricula, String curso, String nome, String endereco, String sexo, String cpf) {
         super(nome, endereco, sexo, cpf);
         this.matricula = matricula;
         this.curso = curso;

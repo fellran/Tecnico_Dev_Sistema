@@ -12,11 +12,11 @@ abstract class Pessoa {
     private String nome;
     private String endereco;
     private String sexo;
-    private int cpf;
+    private String cpf;
     
     // CONSTRUTOR
 
-    public Pessoa(String nome, String endereco, String sexo, int cpf) {
+    public Pessoa(String nome, String endereco, String sexo, String cpf) {
         this.nome = nome;
         this.endereco = endereco;
         this.sexo = sexo;
@@ -49,11 +49,11 @@ abstract class Pessoa {
         this.sexo = sexo;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
     

@@ -5,10 +5,16 @@ USE db_cadastro;
 CREATE TABLE IF NOT EXISTS tb_usuario(
 	id_usuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100),
-    email VARCHAR(100),
-    telefone VARCHAR(20),
-    tipo_usuario VARCHAR(50)
+    cpf VARCHAR(100),
+    sexo VARCHAR(100),
+    endereco VARCHAR(150),
+    curso VARCHAR(20),
+    matricula VARCHAR(50)
 )AUTO_INCREMENT = 1;
 
+alter table tb_usuario modify matricula int;
+
 SELECT * FROM tb_usuario;
+
+describe tb_usuario;
 
