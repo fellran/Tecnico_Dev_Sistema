@@ -1,6 +1,8 @@
 package cadrastro;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AlunoDAO {
     private Connection connection;
@@ -94,4 +96,40 @@ public class AlunoDAO {
                 stmt.close();
         }
     }
+    
+    public List<Aluno> listarUsuario() throws SQLException{
+        
+        List<Aluno> lista = new ArrayList<>();
+        
+        String sql = "SELECT * FROM tb_usuario";
+        
+        PreparedStatement pstm;
+            pstm = null;
+            
+        ResultSet rs = null;
+        
+        try {
+            pstm = connection.prepareStatement(sql);
+            
+            rs = pstm.executeQuery();
+            
+            while (rs.next()) {
+                Aluno aluno = new Aluno();
+                
+                //aluno.setId_usuario(rs.getInt("id"));
+                aluno.setNome(rs.getString("Nome"));
+                aluno.setMatricula(rs.getInt("Matricula"));
+                aluno.setSexo(rs.getString("Sexo"));
+                aluno.setCpf(rs.getString("CPF"));
+                aluno.setEndereco(rs.getString("Endereco"));      
+                aluno.setCurso(rs.getString("Curso"));
+                
+                lista.add(aluno);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+         return lista;
+    }
+
 }

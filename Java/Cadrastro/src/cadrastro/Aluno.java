@@ -5,13 +5,29 @@ public class Aluno extends Pessoa{
     private String curso;
     private int id_usuario;
     
-    // CONSTRUCTOR
+    // CONSTRUCTOR 
     
     public Aluno(int matricula, String curso, String nome, String endereco, String sexo, String cpf) {
         super(nome, endereco, sexo, cpf);
         this.matricula = matricula;
         this.curso = curso;
     }
+    
+    // CONSTRUCTOR VAZIO
+    
+    public Aluno() {
+        
+    }
+    
+    // CONSTRUCTOR COM ID
+    
+//    public Aluno(int matricula, String curso, String nome, String endereco, String sexo, String cpf) {
+//        super(nome, endereco, sexo, cpf);
+//        this.matricula = matricula;
+//        this.curso = curso;
+//        this.id_usuario = id_usuario;
+//    }
+    
     
     // GETTTER AND SETTER
 

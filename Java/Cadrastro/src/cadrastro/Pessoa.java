@@ -23,6 +23,10 @@ abstract class Pessoa {
         this.cpf = cpf;
     }
     
+    public Pessoa(){
+    
+    }
+    
     // GETTER AND SETTER
 
     public String getNome() {

@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS tb_usuario(
     matricula VARCHAR(50)
 )AUTO_INCREMENT = 1;
 
-alter table tb_usuario modify matricula int;
+-- alter table tb_usuario modify cpf VARCHAR(100);
 
 SELECT * FROM tb_usuario;
 
