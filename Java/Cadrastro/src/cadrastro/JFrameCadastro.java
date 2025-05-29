@@ -5,6 +5,7 @@ import cadrastro.Aluno;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,13 +13,32 @@ import javax.swing.table.DefaultTableModel;
  * @author ead
  */
 public class JFrameCadastro extends javax.swing.JFrame {
-
-    /**
-     * Creates new form JFrameCadastro
-     */
+    
     public JFrameCadastro() {
         initComponents();
     }
+
+    // CONSTRUCTOR
+        
+//    public JFrameCadastro() {
+//        this.TabelaVariavel = TabelaVariavel;
+//    }
+
+    // Getter and Setter
+
+    public JTable getTabelaVariavel() {
+        return TabelaVariavel;
+    }
+
+    public void setTabelaVariavel(JTable TabelaVariavel) {
+        this.TabelaVariavel = TabelaVariavel;
+    }
+    
+    
+    
+    /**
+     * Creates new form JFrameCadastro
+     */
 
     /**
      * This method is called from within the constructor to initialize the form.

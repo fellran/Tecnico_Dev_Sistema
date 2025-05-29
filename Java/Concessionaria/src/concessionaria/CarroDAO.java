@@ -87,7 +87,6 @@ public class CarroDAO {
         } catch (Exception erro) {
             System.out.println("Deu Erro" + erro.getMessage());
         }
-        
         finally{
             if(stmt != null)
                 stmt.close();
