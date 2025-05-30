@@ -131,5 +131,25 @@ public class AlunoDAO {
         }
          return lista;
     }
+    
+    public void buscarPorId(int id){
+        String sql = "SELECT * FROM tb_usuario WHERE id_usuario = ?";
+        
+        PreparedStatement stmt;
+        stmt = null;
+        
+        ResultSet rs = null;
+        
+        try {
+            stmt = connection.prepareStatement(sql);
+            
+            rs = stmt.executeQuery();
+            
+            stmt.setInt(1, id);
+            
+            
+        } catch (Exception e) {
+        }
+    }
 
 }

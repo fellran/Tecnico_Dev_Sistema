@@ -97,33 +97,23 @@ public class JFrameBusca extends javax.swing.JFrame{
     // BOTAO BUSCAR
     
     private void botaoBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscaActionPerformed
-
-        this.connection = new ConnectionFactory().connectDB();
+        
+        AlunoDAO alunodao = new AlunoDAO();
+        
+        JFrameCadastro frameCadastro = new JFrameCadastro();
+        
+        DefaultTableModel model = (DefaultTableModel) frameCadastro.getTabelaVariavel().getModel();
+        model.setRowCount(0);
+        
+        frameCadastro.setVisible(true);
 
         int idBuscar = Integer.parseInt(botaoBusca.getText().trim());
 
-        initComponents(); // Inicializa os componentes visuais
+        initComponents();
         
-        // Configura o modelo da tabela
-        DefaultTableModel model = (DefaultTableModel) getTabelaVariavel().getModel();
-        model.setRowCount(0);
-          
-        String sql = "SELECT * FROM tb_usuario WHERE id_usuario = ?";
+        alunodao.buscarPorId(idBuscar);
         
-        PreparedStatement stmt;
-        stmt = null;
         
-        try {
-            stmt = connection.prepareStatement(sql);
-            
-            stmt.setInt(1, idBuscar);
-            
-            stmt.executeUpdate();
-            
-            System.out.println("Delete feito");
-        } catch (Exception e) {
-        }
-
         
         
     }//GEN-LAST:event_botaoBuscaActionPerformed
