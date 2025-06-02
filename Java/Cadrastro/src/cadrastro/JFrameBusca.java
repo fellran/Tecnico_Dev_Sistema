@@ -4,9 +4,13 @@
  */
 package cadrastro;
 
+import cadrastro.AlunoDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,8 +43,10 @@ public class JFrameBusca extends javax.swing.JFrame{
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        botaoBusca = new javax.swing.JButton();
+        textBotao = new javax.swing.JTextField();
+        text = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TableBusca = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,88 +55,101 @@ public class JFrameBusca extends javax.swing.JFrame{
 
         jLabel2.setText("Buscar por id");
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textBotao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        botaoBusca.setText("Buscar");
-        botaoBusca.addActionListener(new java.awt.event.ActionListener() {
+        text.setText("Buscar");
+        text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoBuscaActionPerformed(evt);
+                textActionPerformed(evt);
             }
         });
+
+        TableBusca.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Matricula", "Sexo", "CPF", "Endereco", "Curso"
+            }
+        ));
+        jScrollPane1.setViewportView(TableBusca);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 139, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(botaoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(97, 97, 97)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))
-                            .addGap(16, 16, 16)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(106, Short.MAX_VALUE))
+                        .addGap(313, 313, 313)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(306, 306, 306)
+                        .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(282, 282, 282)
+                        .addComponent(textBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(316, 316, 316)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botaoBusca)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addComponent(text)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // BOTAO BUSCAR
+    private final AlunoDAO alunoDao = new AlunoDAO();
+    private final Aluno aluno = new Aluno();
     
-    private void botaoBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscaActionPerformed
-        
-        JFrameCadastro cadastro = new JFrameCadastro();
-        
-        this.connection = new ConnectionFactory().connectDB();
-
-        int idBuscar = Integer.parseInt(botaoBusca.getText().trim());
-
-        initComponents(); // Inicializa os componentes visuais
-        
-        // Configura o modelo da tabela
-        
-        DefaultTableModel model = (DefaultTableModel) cadastro.getTabelaVariavel().getModel();
+    private void textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textActionPerformed
+       
+        DefaultTableModel model = (DefaultTableModel) TableBusca.getModel();
         model.setRowCount(0);
-          
-        String sql = "SELECT * FROM tb_usuario WHERE id_usuario = ?";
         
-        PreparedStatement stmt;
-        stmt = null;
+        String textoBotaoString = textBotao.getText();
+        int botaoInt = Integer.parseInt(textoBotaoString);
         
-        try {
-            stmt = connection.prepareStatement(sql);
-            
-            stmt.setInt(1, idBuscar);
-            
-            stmt.executeUpdate();
-            
-            System.out.println("Delete feito");
-        } catch (Exception e) {
-        }
+        Aluno aluno = new Aluno();
+        
 
+        alunoDao.buscarPorId(botaoInt);
         
+            if(alunoDao != null){
+                model.addRow(new Object[]{
+                   aluno.getNome(),
+                   aluno.getMatricula(),
+                   aluno.getSexo(),
+                   aluno.getCpf(),
+                   aluno.getEndereco(),
+                   aluno.getCurso()                  
+                });
+                }
         
-    }//GEN-LAST:event_botaoBuscaActionPerformed
-
+    }//GEN-LAST:event_textActionPerformed
+ 
     /**
      * @param args the command line arguments
      */
@@ -167,9 +186,11 @@ public class JFrameBusca extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoBusca;
+    private javax.swing.JTable TableBusca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton text;
+    private javax.swing.JTextField textBotao;
     // End of variables declaration//GEN-END:variables
 }

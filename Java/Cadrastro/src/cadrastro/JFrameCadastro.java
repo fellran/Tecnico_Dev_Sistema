@@ -281,8 +281,9 @@ public class JFrameCadastro extends javax.swing.JFrame {
     
     private void BottonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BottonBuscarActionPerformed
         JFrameBusca frameBuscar = new JFrameBusca();
-        
         frameBuscar.setVisible(true);
+        
+        
     }//GEN-LAST:event_BottonBuscarActionPerformed
 
     /**

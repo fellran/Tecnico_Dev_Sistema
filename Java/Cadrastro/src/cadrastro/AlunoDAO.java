@@ -131,5 +131,37 @@ public class AlunoDAO {
         }
          return lista;
     }
+    
+    public void buscarPorId(int id){
+        String sql = "SELECT * FROM tb_usuario WHERE id_usuario = ?";
+        
+        PreparedStatement pstm;
+        pstm = null;
+        
+        ResultSet rs = null;
+        
+        try {
+            pstm = connection.prepareStatement(sql);
+            
+            rs = pstm.executeQuery();
+            
+            while (rs.next()) {
+                Aluno aluno = new Aluno();
+                
+                //aluno.setId_usuario(rs.getInt("id"));
+                aluno.setNome(rs.getString("Nome"));
+                aluno.setMatricula(rs.getInt("Matricula"));
+                aluno.setSexo(rs.getString("Sexo"));
+                aluno.setCpf(rs.getString("CPF"));
+                aluno.setEndereco(rs.getString("Endereco"));      
+                aluno.setCurso(rs.getString("Curso"));
+            }
+           
+         pstm.setInt(1, id);
+            
+        } catch (Exception e) {
+            
+        }
+    }
 
 }
