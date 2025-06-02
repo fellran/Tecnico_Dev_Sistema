@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS tb_usuario(
 
 -- alter table tb_usuario modify cpf VARCHAR(100);
 
-SELECT * FROM tb_usuario;
+SELECT * FROM tb_usuario;	
 
 describe tb_usuario;
 

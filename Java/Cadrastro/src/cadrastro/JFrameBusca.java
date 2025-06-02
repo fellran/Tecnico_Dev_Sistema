@@ -4,13 +4,15 @@
  */
 package cadrastro;
 
-import cadrastro.AlunoDAO;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import java.util.Vector;
 
 /**
  *
@@ -18,19 +20,16 @@ import javax.swing.JOptionPane;
  */
 public class JFrameBusca extends javax.swing.JFrame{
     
+   // private JTextField textBotao; 
+   // private JTable TableBusca;    
+   // private JButton buscar; 
+    
     public JFrameBusca() {
         initComponents();
     }
     
     private Connection connection;
- 
-    
-    /**
-     * Creates new form JFrameBusca
-     */
-//    public JFrameBusca() {
-//        initComponents();
-//    }
+    private AlunoDAO alunoDAO;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -121,35 +120,74 @@ public class JFrameBusca extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     // BOTAO BUSCAR
-    private final AlunoDAO alunoDao = new AlunoDAO();
-    private final Aluno aluno = new Aluno();
-    
     private void textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textActionPerformed
-       
-        DefaultTableModel model = (DefaultTableModel) TableBusca.getModel();
-        model.setRowCount(0);
-        
-        String textoBotaoString = textBotao.getText();
-        int botaoInt = Integer.parseInt(textoBotaoString);
-        
-        Aluno aluno = new Aluno();
-        
-
-        alunoDao.buscarPorId(botaoInt);
-        
-            if(alunoDao != null){
-                model.addRow(new Object[]{
-                   aluno.getNome(),
-                   aluno.getMatricula(),
-                   aluno.getSexo(),
-                   aluno.getCpf(),
-                   aluno.getEndereco(),
-                   aluno.getCurso()                  
-                });
+        String idTexto = textBotao.getText();
+                if (idTexto != null && !idTexto.trim().isEmpty()) {
+                    try {
+                        int id = Integer.parseInt(idTexto);
+                            buscarAlunoPorId(id);
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(JFrameBusca.this, "Por favor, digite um ID válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(JFrameBusca.this, "Por favor, digite um ID para buscar.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
-        
     }//GEN-LAST:event_textActionPerformed
  
+    // 
+    
+        private void buscarAlunoPorId(int id) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            ConnectionFactory cf = new ConnectionFactory(); 
+            conn = cf.connectDB(); 
+
+            String sql = "SELECT nome, matricula, sexo, cpf, endereco, curso FROM tb_usuario WHERE id_usuario = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, id);
+            rs = pstmt.executeQuery();
+
+            DefaultTableModel tableModel = new DefaultTableModel();
+
+            // Define as colunas da tabela
+            tableModel.addColumn("Nome");
+            tableModel.addColumn("Matrícula");
+            tableModel.addColumn("Sexo");
+            tableModel.addColumn("CPF");
+            tableModel.addColumn("Endereço");
+            tableModel.addColumn("Curso");
+
+            if (rs.next()) {
+                // Adiciona a linha com os dados do aluno encontrado
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nome"));
+                row.add(rs.getString("matricula"));
+                row.add(rs.getString("sexo"));
+                row.add(rs.getString("cpf"));
+                row.add(rs.getString("endereco"));
+                row.add(rs.getString("curso"));
+                tableModel.addRow(row);
+            } else {
+                JOptionPane.showMessageDialog(this, "Nenhum aluno encontrado com o ID: " + id, "Informação", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            TableBusca.setModel(tableModel);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao buscar o aluno: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        } finally {
+            // Feche a conexão, o PreparedStatement e o ResultSet no bloco finally para garantir que sejam fechados mesmo em caso de erro.
+            try { if (rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { if (pstmt != null) pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
