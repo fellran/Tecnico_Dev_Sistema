@@ -66,8 +66,8 @@ public class JFrameCadastro extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaVariavel = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
-        BottonBuscar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        BottonBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,6 +121,9 @@ public class JFrameCadastro extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton4.setText("Pesquisar");
+
         BottonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BottonBuscar.setText("Buscar");
         BottonBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -128,9 +131,6 @@ public class JFrameCadastro extends javax.swing.JFrame {
                 BottonBuscarActionPerformed(evt);
             }
         });
-
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setText("Pesquisar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

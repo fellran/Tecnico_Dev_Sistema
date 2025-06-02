@@ -97,7 +97,9 @@ public class JFrameBusca extends javax.swing.JFrame{
     // BOTAO BUSCAR
     
     private void botaoBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscaActionPerformed
-
+        
+        JFrameCadastro cadastro = new JFrameCadastro();
+        
         this.connection = new ConnectionFactory().connectDB();
 
         int idBuscar = Integer.parseInt(botaoBusca.getText().trim());
@@ -105,7 +107,8 @@ public class JFrameBusca extends javax.swing.JFrame{
         initComponents(); // Inicializa os componentes visuais
         
         // Configura o modelo da tabela
-        DefaultTableModel model = (DefaultTableModel) getTabelaVariavel().getModel();
+        
+        DefaultTableModel model = (DefaultTableModel) cadastro.getTabelaVariavel().getModel();
         model.setRowCount(0);
           
         String sql = "SELECT * FROM tb_usuario WHERE id_usuario = ?";
