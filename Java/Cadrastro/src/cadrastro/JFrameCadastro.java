@@ -122,7 +122,12 @@ public class JFrameCadastro extends javax.swing.JFrame {
         });
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setText("Pesquisar");
+        jButton4.setText("Atualizar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         BottonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BottonBuscar.setText("Buscar");
@@ -201,8 +206,8 @@ public class JFrameCadastro extends javax.swing.JFrame {
                             .addComponent(textEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,6 +290,13 @@ public class JFrameCadastro extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_BottonBuscarActionPerformed
+
+    // BOTAO ATUALIZAR
+    
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        JframeAtualizar jframeAtualizar = new JframeAtualizar();
+        jframeAtualizar.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -40,8 +40,8 @@ public class PadariaDAO {
         
     }
     
-    public List<Usuario> listarUsuarios() throws SQLException {
-        List<Usuario> lista = new ArrayList<>();
+    public List<Padaria> listarUsuarios() throws SQLException {
+        List<Padaria> lista = new ArrayList<>();
         
         String sql = "SELECT * FROM tb_usuario";
         
@@ -53,15 +53,14 @@ public class PadariaDAO {
             rs = pstm.executeQuery();
             
             while (rs.next()){
-                Usuario usuario = new Usuario(0, "", "", "", "");
+                Padaria padaria = new Padaria(0, "", "", "");
                 
-                usuario.setId_usuario(rs.getInt("id_usuario"));
-                usuario.setNome(rs.getString("nome"));
-                usuario.setEmail(rs.getString("email"));
-                usuario.setTelefone(rs.getString("telefone"));
-                usuario.setTipo_usuario(rs.getString("tipo_usuario"));
+                padaria.setId(rs.getInt("id_usuario"));
+                padaria.setNome(rs.getString("nome"));
+                padaria.setEmail(rs.getString("email"));
+                padaria.setTelefone(rs.getString("telefone"));
                 
-                lista.add(usuario);
+                lista.add(padaria);
             }
         } catch (SQLException erro) {
             System.out.println("Erro" + erro.getMessage());
