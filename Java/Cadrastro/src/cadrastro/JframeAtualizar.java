@@ -32,6 +32,8 @@ public class JframeAtualizar extends javax.swing.JFrame {
      */
     public JframeAtualizar() {
         initComponents();
+        setDefaultCloseOperation(JframeAtualizar.DISPOSE_ON_CLOSE); // ESSA É A CHAVE!
+        setLocationRelativeTo(null); // Centraliza a janela
     }
 
     /**
@@ -242,9 +244,7 @@ public class JframeAtualizar extends javax.swing.JFrame {
 
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        setDefaultCloseOperation(JframeAtualizar.DISPOSE_ON_CLOSE); // ESSA É A CHAVE!
-        setLocationRelativeTo(null); // Centraliza a janela
-        
+   
         Connection conn = null;
         PreparedStatement psmt;
         ResultSet rs = null;

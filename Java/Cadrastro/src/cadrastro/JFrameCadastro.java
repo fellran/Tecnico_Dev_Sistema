@@ -14,8 +14,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JFrameCadastro extends javax.swing.JFrame {
     
+    
+    
     public JFrameCadastro() {
         initComponents();
+        setDefaultCloseOperation(JFrameCadastro.EXIT_ON_CLOSE);
     }
 
     // CONSTRUCTOR
