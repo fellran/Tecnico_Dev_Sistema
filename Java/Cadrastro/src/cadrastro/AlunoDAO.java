@@ -48,6 +48,8 @@ public class AlunoDAO {
         PreparedStatement stmt;
         stmt = null;
         
+       
+        
         try {
             stmt = connection.prepareStatement(sql);
             

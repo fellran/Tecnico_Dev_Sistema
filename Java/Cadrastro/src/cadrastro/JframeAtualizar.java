@@ -9,7 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,6 +20,12 @@ import javax.swing.table.DefaultTableModel;
  * @author ead
  */
 public class JframeAtualizar extends javax.swing.JFrame {
+    
+   
+     
+    public void setTextSexo(JTextField textSexo) {
+        this.textSexo = textSexo;
+    }
 
     /**
      * Creates new form JframeAtualizar
@@ -35,13 +44,9 @@ public class JframeAtualizar extends javax.swing.JFrame {
     private void initComponents() {
 
         textNome = new javax.swing.JPanel();
-        textPesquisar = new javax.swing.JTextField();
-        textBotaoPesquisar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textTabelaPesquisar = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        textName = new javax.swing.JTextField();
         textMatricula = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -54,33 +59,15 @@ public class JframeAtualizar extends javax.swing.JFrame {
         textCurso = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TableUpdate = new javax.swing.JTable();
+        label = new javax.swing.JLabel();
+        textId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         textNome.setBackground(new java.awt.Color(153, 153, 153));
         textNome.setForeground(new java.awt.Color(153, 153, 153));
         textNome.setToolTipText("");
-
-        textBotaoPesquisar.setText("Pesquisar");
-        textBotaoPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textBotaoPesquisarActionPerformed(evt);
-            }
-        });
-
-        textTabelaPesquisar.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nome", "Matricula", "Sexo", "CPF", "Endereco", "Curso"
-            }
-        ));
-        jScrollPane1.setViewportView(textTabelaPesquisar);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -123,7 +110,7 @@ public class JframeAtualizar extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableUpdate.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -134,100 +121,99 @@ public class JframeAtualizar extends javax.swing.JFrame {
                 "Nome", "Matricula", "Sexo", "CPF", "Endereco", "Curso"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(TableUpdate);
+
+        label.setBackground(new java.awt.Color(51, 51, 51));
+        label.setForeground(new java.awt.Color(51, 51, 51));
+        label.setText("ID");
 
         javax.swing.GroupLayout textNomeLayout = new javax.swing.GroupLayout(textNome);
         textNome.setLayout(textNomeLayout);
         textNomeLayout.setHorizontalGroup(
             textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(textNomeLayout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(textNomeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(textNomeLayout.createSequentialGroup()
-                        .addComponent(textPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(textBotaoPesquisar))
-                    .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton2)
-                        .addGroup(textNomeLayout.createSequentialGroup()
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(textCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(619, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textNomeLayout.createSequentialGroup()
+                .addContainerGap(298, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
             .addGroup(textNomeLayout.createSequentialGroup()
                 .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(textNomeLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))
-                    .addGroup(textNomeLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(textNomeLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(textCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(textNomeLayout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(textEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(textEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(textNomeLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(textNomeLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(textMatricula)
+                                    .addComponent(textName)
+                                    .addComponent(textId)
+                                    .addComponent(textSexo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(textNomeLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(textCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(textNomeLayout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(jButton2))
+                    .addGroup(textNomeLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         textNomeLayout.setVerticalGroup(
             textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(textNomeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textBotaoPesquisar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1)
+                .addGap(29, 29, 29)
                 .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(textNomeLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(29, 29, 29)
+                        .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(textCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
-                        .addGap(23, 23, 23)
-                        .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -254,45 +240,41 @@ public class JframeAtualizar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textCursoActionPerformed
 
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void textBotaoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBotaoPesquisarActionPerformed
-        // TODO add your handling code here:
-                String idTexto = textPesquisar.getText();
-                if (idTexto != null && !idTexto.trim().isEmpty()) {
-                    try {
-                        int id = Integer.parseInt(idTexto);
-                            buscarAlunoPorId(id);
-                    } catch (NumberFormatException ex) {
-                        //JOptionPane.showMessageDialog("Por favor, digite um ID válido.", "Erro", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-                   // JOptionPane.showMessageDialog(JFrameBusca.this, "Por favor, digite um ID para buscar.", "Aviso", JOptionPane.WARNING_MESSAGE);
-                }
-    }//GEN-LAST:event_textBotaoPesquisarActionPerformed
-
-    private void textEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEnderecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textEnderecoActionPerformed
-
-    // BuscarAlunoPorId
-    
-    private void buscarAlunoPorId(int id) {
+        setDefaultCloseOperation(JframeAtualizar.DISPOSE_ON_CLOSE); // ESSA É A CHAVE!
+        setLocationRelativeTo(null); // Centraliza a janela
+        
         Connection conn = null;
-        PreparedStatement pstmt = null;
+        PreparedStatement psmt;
         ResultSet rs = null;
-
+        
+        
+        psmt = null;
+        
+        
         try {
-            ConnectionFactory cf = new ConnectionFactory(); 
-            conn = cf.connectDB(); 
-
-            String sql = "SELECT nome, matricula, sexo, cpf, endereco, curso FROM tb_usuario WHERE id_usuario = ?";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, id);
-            rs = pstmt.executeQuery();
-
+            
+            ConnectionFactory cf = new ConnectionFactory();
+            conn = cf.connectDB();
+            String sql = "UPDATE tb_usuario SET nome = ?, cpf = ?, sexo = ?, endereco = ?, curso = ?, matricula = ?  WHERE id_usuario = ?";
+            psmt = conn.prepareStatement(sql);
+            
+            psmt.setString(1, textName.getText());
+            psmt.setString(2, textCpf.getText());
+            psmt.setString(3, textSexo.getText());
+            psmt.setString(4, textEndereco.getText());
+            psmt.setString(5, textCurso.getText());
+            psmt.setString(6, textMatricula.getText());
+            psmt.setString(7, textId.getText());
+            psmt.executeUpdate();
+            
+            // SELECT
+            String sqlSelect = "SELECT nome, matricula, sexo, cpf, endereco, curso FROM tb_usuario WHERE id_usuario = ?";
+            psmt = conn.prepareStatement(sqlSelect);
+            psmt.setString(1, textId.getText());
+            rs = psmt.executeQuery();
+                    
             DefaultTableModel tableModel = new DefaultTableModel();
 
             // Define as colunas da tabela
@@ -302,8 +284,8 @@ public class JframeAtualizar extends javax.swing.JFrame {
             tableModel.addColumn("CPF");
             tableModel.addColumn("Endereço");
             tableModel.addColumn("Curso");
-
-            if (rs.next()) {
+            
+             if (rs.next()) {
                 // Adiciona a linha com os dados do aluno encontrado
                 Vector<Object> row = new Vector<>();
                 row.add(rs.getString("nome"));
@@ -314,22 +296,19 @@ public class JframeAtualizar extends javax.swing.JFrame {
                 row.add(rs.getString("curso"));
                 tableModel.addRow(row);
             } else {
-                JOptionPane.showMessageDialog(this, "Nenhum aluno encontrado com o ID: " + id, "Informação", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Nenhum aluno encontrado com o ID: " , "Informação", JOptionPane.INFORMATION_MESSAGE);
             }
 
-            textTabelaPesquisar.setModel(tableModel);
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Erro ao buscar o aluno: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-        } finally {
-            // Feche a conexão, o PreparedStatement e o ResultSet no bloco finally para garantir que sejam fechados mesmo em caso de erro.
-            try { if (rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
-            try { if (pstmt != null) pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
-            try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+            TableUpdate.setModel(tableModel);
+        } catch (Exception e) {
+            System.out.println("Nao foi " + e.getMessage());
         }
-    }
-    
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void textEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEnderecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textEnderecoActionPerformed
+  
     
     /**
      * @param args the command line arguments
@@ -367,6 +346,7 @@ public class JframeAtualizar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TableUpdate;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -375,18 +355,15 @@ public class JframeAtualizar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JButton textBotaoPesquisar;
+    private javax.swing.JLabel label;
     private javax.swing.JTextField textCpf;
     private javax.swing.JTextField textCurso;
     private javax.swing.JTextField textEndereco;
+    private javax.swing.JTextField textId;
     private javax.swing.JTextField textMatricula;
+    private javax.swing.JTextField textName;
     private javax.swing.JPanel textNome;
-    private javax.swing.JTextField textPesquisar;
     private javax.swing.JTextField textSexo;
-    private javax.swing.JTable textTabelaPesquisar;
     // End of variables declaration//GEN-END:variables
 }
