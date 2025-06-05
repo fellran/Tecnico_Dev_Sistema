@@ -74,8 +74,8 @@ public class AlunoDAO {
         }
     }
     
-    public void deleteAluno(int id) throws SQLException{
-        String sql = "DELETE FROM tb_usuario WHERE id_carro = ?";
+    public void deleteAluno(String nome) throws SQLException{
+        String sql = "DELETE FROM tb_usuario WHERE nome LIKE ?";
         
         PreparedStatement stmt;
         stmt = null;
@@ -84,7 +84,7 @@ public class AlunoDAO {
             stmt = connection.prepareStatement(sql);
             
             
-            stmt.setInt(1, id);
+            stmt.setString(1, "%"+nome+"%");
             
             stmt.executeUpdate();
             

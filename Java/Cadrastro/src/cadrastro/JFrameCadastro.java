@@ -7,6 +7,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -17,8 +19,13 @@ public class JFrameCadastro extends javax.swing.JFrame {
     
     
     public JFrameCadastro() {
+        setTitle("Cadastro");
         initComponents();
         setDefaultCloseOperation(JFrameCadastro.EXIT_ON_CLOSE);
+        //  Centralizar a janela
+        setLocationRelativeTo(null);
+        // Impede que o usuario redimensione a janela
+        setResizable(false);
     }
 
     // CONSTRUCTOR
@@ -133,7 +140,7 @@ public class JFrameCadastro extends javax.swing.JFrame {
         });
 
         BottonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        BottonBuscar.setText("Buscar");
+        BottonBuscar.setText("Buscar/Deletar");
         BottonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BottonBuscarActionPerformed(evt);
@@ -180,9 +187,9 @@ public class JFrameCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(31, 31, 31)
                         .addComponent(BottonBuscar)
-                        .addGap(18, 18, 18)
+                        .addGap(28, 28, 28)
                         .addComponent(jButton4))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(173, 173, 173))

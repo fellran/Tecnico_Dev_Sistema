@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,11 +27,18 @@ public class JFrameBusca extends javax.swing.JFrame{
    // private JButton buscar; 
     
     public JFrameBusca() {
+        setTitle("Buscar");
+       //  Centralizar a janela
+        setLocationRelativeTo(null);
+        // Impede que o usuario redimensione a janela
+        setResizable(false);
         initComponents();
+        setDefaultCloseOperation(JframeAtualizar.DISPOSE_ON_CLOSE); // ESSA É A CHAVE!
+        setLocationRelativeTo(null); // Centraliza a janela
     }
     
     private Connection connection;
-    private AlunoDAO alunoDAO;
+    private AlunoDAO alunoDAO = new AlunoDAO();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,15 +55,22 @@ public class JFrameBusca extends javax.swing.JFrame{
         text = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableBusca = new javax.swing.JTable();
+        btnDeletar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Buscar");
 
-        jLabel2.setText("Buscar por id");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Buscar por nome");
 
         textBotao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textBotaoActionPerformed(evt);
+            }
+        });
 
         text.setText("Buscar");
         text.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +92,14 @@ public class JFrameBusca extends javax.swing.JFrame{
         ));
         jScrollPane1.setViewportView(TableBusca);
 
+        btnDeletar.setText("Deletar");
+        btnDeletar.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 102, 102), new java.awt.Color(153, 153, 153)));
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,14 +114,15 @@ public class JFrameBusca extends javax.swing.JFrame{
                         .addGap(313, 313, 313)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(306, 306, 306)
-                        .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(282, 282, 282)
-                        .addComponent(textBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(316, 316, 316)
-                        .addComponent(jLabel2)))
+                        .addGap(150, 150, 150)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(text)
+                                .addGap(26, 26, 26)
+                                .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -107,13 +132,14 @@ public class JFrameBusca extends javax.swing.JFrame{
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(text)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text)
+                    .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,8 +150,9 @@ public class JFrameBusca extends javax.swing.JFrame{
         String idTexto = textBotao.getText();
                 if (idTexto != null && !idTexto.trim().isEmpty()) {
                     try {
-                        int id = Integer.parseInt(idTexto);
-                            buscarAlunoPorId(id);
+                        //int id = Integer.parseInt(idTexto);
+                            buscarAlunoPorId(idTexto);
+                           
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(JFrameBusca.this, "Por favor, digite um ID válido.", "Erro", JOptionPane.ERROR_MESSAGE);
                     }
@@ -133,10 +160,33 @@ public class JFrameBusca extends javax.swing.JFrame{
                     JOptionPane.showMessageDialog(JFrameBusca.this, "Por favor, digite um ID para buscar.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
     }//GEN-LAST:event_textActionPerformed
+
+    private void textBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBotaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textBotaoActionPerformed
+
+    // Button deletar
+    
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        String lblDeletar = textBotao.getText();
+        
+            if (lblDeletar != null && !lblDeletar.trim().isEmpty()) {
+                try {
+                    alunoDAO.deleteAluno(lblDeletar);
+                    JOptionPane.showMessageDialog(this, "Usuario Deletar");
+                } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(JFrameBusca.this, "Por favor, digite um ID válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+                } catch (SQLException ex) {
+                Logger.getLogger(JFrameBusca.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                } else {
+                    JOptionPane.showMessageDialog(JFrameBusca.this, "Por favor, digite um ID para buscar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                }
+    }//GEN-LAST:event_btnDeletarActionPerformed
  
     // 
     
-        private void buscarAlunoPorId(int id) {
+        private void buscarAlunoPorId(String nome) {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -145,9 +195,9 @@ public class JFrameBusca extends javax.swing.JFrame{
             ConnectionFactory cf = new ConnectionFactory(); 
             conn = cf.connectDB(); 
 
-            String sql = "SELECT nome, matricula, sexo, cpf, endereco, curso FROM tb_usuario WHERE id_usuario = ?";
+            String sql = "SELECT nome, matricula, sexo, cpf, endereco, curso FROM tb_usuario WHERE nome LIKE ?";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, id);
+            pstmt.setString(1, "%"+nome+"%");
             rs = pstmt.executeQuery();
 
             DefaultTableModel tableModel = new DefaultTableModel();
@@ -171,7 +221,7 @@ public class JFrameBusca extends javax.swing.JFrame{
                 row.add(rs.getString("curso"));
                 tableModel.addRow(row);
             } else {
-                JOptionPane.showMessageDialog(this, "Nenhum aluno encontrado com o ID: " + id, "Informação", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Nenhum aluno encontrado com o nome : " + nome, "Informação", JOptionPane.INFORMATION_MESSAGE);
             }
 
             TableBusca.setModel(tableModel);
@@ -225,6 +275,7 @@ public class JFrameBusca extends javax.swing.JFrame{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableBusca;
+    private javax.swing.JButton btnDeletar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

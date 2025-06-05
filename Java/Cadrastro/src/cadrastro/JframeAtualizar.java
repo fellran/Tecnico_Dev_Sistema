@@ -23,15 +23,20 @@ public class JframeAtualizar extends javax.swing.JFrame {
     
    
      
-    public void setTextSexo(JTextField textSexo) {
-        this.textSexo = textSexo;
-    }
+//    public void setTextSexo(JTextField textSexo) {
+//        this.textSexo = textSexo;
+//    }
 
     /**
      * Creates new form JframeAtualizar
      */
     public JframeAtualizar() {
+        setTitle("Atualizar");
         initComponents();
+        //  Centralizar a janela
+        setLocationRelativeTo(null);
+        // Impede que o usuario redimensione a janela
+        setResizable(false);
         setDefaultCloseOperation(JframeAtualizar.DISPOSE_ON_CLOSE); // ESSA É A CHAVE!
         setLocationRelativeTo(null); // Centraliza a janela
     }
@@ -49,10 +54,8 @@ public class JframeAtualizar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         textName = new javax.swing.JTextField();
-        textMatricula = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        textSexo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         textCpf = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -64,6 +67,8 @@ public class JframeAtualizar extends javax.swing.JFrame {
         TableUpdate = new javax.swing.JTable();
         label = new javax.swing.JLabel();
         textId = new javax.swing.JTextField();
+        textMatricula = new javax.swing.JTextField();
+        textSexo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,6 +134,8 @@ public class JframeAtualizar extends javax.swing.JFrame {
         label.setForeground(new java.awt.Color(51, 51, 51));
         label.setText("ID");
 
+        textSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Prefiro não dizer" }));
+
         javax.swing.GroupLayout textNomeLayout = new javax.swing.GroupLayout(textNome);
         textNome.setLayout(textNomeLayout);
         textNomeLayout.setHorizontalGroup(
@@ -160,15 +167,17 @@ public class JframeAtualizar extends javax.swing.JFrame {
                             .addComponent(label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(textNomeLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(textCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(textNomeLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(textNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textMatricula)
-                                    .addComponent(textName)
+                                    .addComponent(textName, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                                     .addComponent(textId)
-                                    .addComponent(textSexo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(textNomeLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(textCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(textMatricula)
+                                    .addGroup(textNomeLayout.createSequentialGroup()
+                                        .addComponent(textSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(2, 2, 2))))))
                     .addGroup(textNomeLayout.createSequentialGroup()
                         .addGap(185, 185, 185)
                         .addComponent(jButton2))
@@ -262,7 +271,7 @@ public class JframeAtualizar extends javax.swing.JFrame {
             
             psmt.setString(1, textName.getText());
             psmt.setString(2, textCpf.getText());
-            psmt.setString(3, textSexo.getText());
+            psmt.setString(3, (String) textSexo.getSelectedItem());
             psmt.setString(4, textEndereco.getText());
             psmt.setString(5, textCurso.getText());
             psmt.setString(6, textMatricula.getText());
@@ -364,6 +373,6 @@ public class JframeAtualizar extends javax.swing.JFrame {
     private javax.swing.JTextField textMatricula;
     private javax.swing.JTextField textName;
     private javax.swing.JPanel textNome;
-    private javax.swing.JTextField textSexo;
+    private javax.swing.JComboBox<String> textSexo;
     // End of variables declaration//GEN-END:variables
 }
