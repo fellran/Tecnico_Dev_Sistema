@@ -9,7 +9,7 @@ public class ConnectionFactory {
         Connection conn = null;
 
         try{
-            String url = "jdbc:mysql://localhost:3306/db_cadastro?useSS1=false";
+            String url = "jdbc:mysql://localhost:3306/db_padaria?useSS1=false";
             String user = "root";
             String password = "";
 

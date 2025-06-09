@@ -43,9 +43,7 @@ public class JFrameCadastro extends javax.swing.JFrame {
     public void setTabelaVariavel(JTable TabelaVariavel) {
         this.TabelaVariavel = TabelaVariavel;
     }
-    
-    
-    
+     
     /**
      * Creates new form JFrameCadastro
      */
