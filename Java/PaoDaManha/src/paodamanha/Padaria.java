@@ -9,25 +9,25 @@ package paodamanha;
  * @author ead
  */
 public class Padaria {
-    private int id;
+    // private int id;
     private String nome;
     private String email;
     private String telefone;
 
-    public Padaria(int id, String nome, String email, String telefone) {
-        this.id = id;
+    public Padaria(String nome, String email, String telefone) {
+        // this.id = id;
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
     }
 
-    public int getId() {
-        return id;
-    }
+//    public int getId() {
+//        return id;
+//    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getNome() {
         return nome;

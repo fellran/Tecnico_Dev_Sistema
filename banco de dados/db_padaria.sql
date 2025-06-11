@@ -8,3 +8,9 @@ CREATE TABLE IF NOT EXISTS tb_usuario (
     email VARCHAR(150) UNIQUE,
     telefone INT
 )AUTO_INCREMENT = 1;
+
+SELECT * FROM tb_usuario;
+
+ALTER TABLE tb_usuario MODIFY COLUMN telefone BIGINT;
+
+DESCRIBE tb_usuario;

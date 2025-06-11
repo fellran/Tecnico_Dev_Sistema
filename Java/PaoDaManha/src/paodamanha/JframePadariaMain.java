@@ -1,54 +1,21 @@
 package paodamanha;
 
-import javax.imageio.ImageIO;
-import java.net.URL;
 import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
+import javax.swing.JOptionPane;
 
 public class JframePadariaMain extends javax.swing.JFrame {
 
+    
+    
     /**
      * Creates new form JframePadariaMain
      */
     public JframePadariaMain() {
         initComponents();
+        setTitle("Pao da manha");
+        setDefaultCloseOperation(JframePadariaMain.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        
-        ImageIcon backgroundImage = null;
-        String imagePath = "Images/Banner.jfif";
-        
-        try {
-            URL imageURL = getClass().getClassLoader().getResource(imagePath);
-            if (imageURL != null) {
-                backgroundImage = new ImageIcon(ImageIO.read(imageURL));
-            }else{
-                System.out.println("Erro: não consegui encontrar a imagen");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro de E/S ao carregar");
-        }
-        
-        JLabel backgroundLabel = new JLabel(backgroundImage);
-        
-        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
-        
-        JLayeredPane layeredPane = getRootPane().getLayeredPane();
-        
-        layeredPane.add(backgroundLabel, JLayeredPane.FRAME_CONTENT_LAYER);
-        backgroundLabel.setLocation(0, 0);
-        
-        JPanel contentPanel = (JPanel) getContentPane();
-        contentPanel.setOpaque(false);
-        
-        addComponentListener(new java.awt.event.ComponentAdapter(){
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
-                layeredPane.revalidate();
-                layeredPane.repaint();
-            }
-        });
+        setResizable(false);
     }
 
     /**
@@ -61,22 +28,109 @@ public class JframePadariaMain extends javax.swing.JFrame {
     private void initComponents() {
 
         jSeparator1 = new javax.swing.JSeparator();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+
+        jMenu1.setText("jMenu1");
+
+        jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel1.setText("Pão da manhã");
+
+        jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(jButton1)))
+                .addContainerGap(146, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addGap(89, 89, 89)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
+
+        jMenu2.setText("Options");
+
+        jMenuItem1.setText("Mostrar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuItem2.setText("Atualizar ");
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem3.setText("Deletar");
+        jMenu2.add(jMenuItem3);
+
+        jMenuItem5.setText("Buscar");
+        jMenu2.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 612, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 322, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    // BARRA MENU >> MOSTRAR <<
+    
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        JOptionPane.showMessageDialog(this, "click deu certo");
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    // BOTAO CADASTRAR
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JframeCadastro jframecadastro = new JframeCadastro();
+        jframecadastro.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,6 +170,19 @@ public class JframePadariaMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

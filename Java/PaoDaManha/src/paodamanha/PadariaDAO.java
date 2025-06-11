@@ -18,7 +18,7 @@ public class PadariaDAO {
     }
     
     public void criaUsuario(Padaria padaria) throws SQLException{
-        String sql = "INSERT INTO tb_usuario (nome, email, telefone,) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO tb_usuario (nome, email, telefone) VALUES(?,?,?)";
         
         PreparedStatement stmt;
         stmt = null;
@@ -56,9 +56,9 @@ public class PadariaDAO {
             rs = pstm.executeQuery();
             
             while (rs.next()){
-                Padaria padaria = new Padaria(0, "", "", "");
+                Padaria padaria = new Padaria("", "", "");
                 
-                padaria.setId(rs.getInt("id_usuario"));
+                // padaria.setId(rs.getInt("id_usuario"));
                 padaria.setNome(rs.getString("nome"));
                 padaria.setEmail(rs.getString("email"));
                 padaria.setTelefone(rs.getString("telefone"));
