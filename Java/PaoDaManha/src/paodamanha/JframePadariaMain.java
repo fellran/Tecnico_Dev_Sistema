@@ -1,7 +1,9 @@
 package paodamanha;
 
+import java.util.List;
 import javax.swing.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class JframePadariaMain extends javax.swing.JFrame {
 
@@ -17,7 +19,8 @@ public class JframePadariaMain extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
     }
-
+    
+    private final PadariaDAO padariadao = new PadariaDAO();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,9 +96,19 @@ public class JframePadariaMain extends javax.swing.JFrame {
         jMenu2.add(jMenuItem1);
 
         jMenuItem2.setText("Atualizar ");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuItem3.setText("Deletar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuItem5.setText("Buscar");
@@ -122,15 +135,48 @@ public class JframePadariaMain extends javax.swing.JFrame {
     // BARRA MENU >> MOSTRAR <<
     
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        JOptionPane.showMessageDialog(this, "click deu certo");
+        JframeBuscar jframebuscar = new JframeBuscar();
+        jframebuscar.setVisible(true);
+        
+        try {
+            DefaultTableModel model = (DefaultTableModel) jframebuscar.tabelaPadaria.getModel();
+            model.setRowCount(0);
+            
+            List<Padaria> padaria = padariadao.listarUsuarios();
+            
+            for (Padaria p : padaria) {
+                model.addRow(new Object[]{
+                    p.getNome(),
+                    p.getEmail(),
+                    p.getTelefone()
+                });
+            }
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    
     // BOTAO CADASTRAR
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JframeCadastro jframecadastro = new JframeCadastro();
         jframecadastro.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    // BOTAO >> ATUALIZAR <<
+    
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       JframeAtualizar jframeatualizar = new JframeAtualizar();
+       jframeatualizar.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    // BOTAO >> DELETAR <<
+    
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        JframeDeletar jframedeletar = new JframeDeletar();
+        jframedeletar.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -11,6 +11,6 @@ CREATE TABLE IF NOT EXISTS tb_usuario (
 
 SELECT * FROM tb_usuario;
 
-ALTER TABLE tb_usuario MODIFY COLUMN telefone BIGINT;
+ALTER TABLE tb_usuario MODIFY COLUMN telefone CHAR(14);
 
 DESCRIBE tb_usuario;

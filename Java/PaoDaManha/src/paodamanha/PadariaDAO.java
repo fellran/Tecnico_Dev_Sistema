@@ -107,7 +107,9 @@ public class PadariaDAO {
     
     // Buscar por nome
     
-    private void buscarAlunoPorNome(String nome) {
+    private final JframeDeletar jframedeletar = new JframeDeletar();
+    
+    private void buscarAlunoPorNome(String nome) throws SQLException {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -116,7 +118,7 @@ public class PadariaDAO {
             ConnectionFactory cf = new ConnectionFactory(); 
             conn = cf.connectDB(); 
 
-            String sql = "SELECT nome, matricula, sexo, cpf, endereco, curso FROM tb_usuario WHERE nome LIKE ?";
+            String sql = "SELECT nome, email, telefone FROM tb_usuario WHERE nome LIKE ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, "%"+nome+"%");
             rs = pstmt.executeQuery();
@@ -125,27 +127,22 @@ public class PadariaDAO {
 
             // Define as colunas da tabela
             tableModel.addColumn("Nome");
-            tableModel.addColumn("Matrícula");
-            tableModel.addColumn("Sexo");
-            tableModel.addColumn("CPF");
-            tableModel.addColumn("Endereço");
-            tableModel.addColumn("Curso");
+            tableModel.addColumn("Email");
+            tableModel.addColumn("Telefone");
+  
 
             if (rs.next()) {
                 // Adiciona a linha com os dados do aluno encontrado
                 Vector<Object> row = new Vector<>();
-                row.add(rs.getString("nome"));
-                row.add(rs.getString("matricula"));
-                row.add(rs.getString("sexo"));
-                row.add(rs.getString("cpf"));
-                row.add(rs.getString("endereco"));
-                row.add(rs.getString("curso"));
+                row.add(rs.getString("Nome"));
+                row.add(rs.getString("Email"));
+                row.add(rs.getString("Telefone"));
                 tableModel.addRow(row);
             } else {
                 //JOptionPane.showMessageDialog(this,"Nenhum aluno encontrado com o nome : " + nome, "Informação", JOptionPane.INFORMATION_MESSAGE);
             }
 
-           // TableBusca.setModel(tableModel);
+           jframedeletar.tabelaDeletarBuscar.setModel(tableModel);
 
         } catch (SQLException e) {
             //JOptionPane.showMessageDialog(this, "Erro ao buscar o aluno: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
