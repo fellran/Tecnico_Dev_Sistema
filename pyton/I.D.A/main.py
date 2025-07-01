@@ -12,11 +12,12 @@ while True:
             funcoes.cadastrar_candidatos()
         case 2:
             # Votar
-            funcoes.votarCanditados()
+            funcoes.votarCandidatos()
         case 3:
            # Resultados
-           print("teste")
+           funcoes.resultado_votos()
         case 4:
            # sair do progra
+            print("Saindo do programa...")
             break
 
