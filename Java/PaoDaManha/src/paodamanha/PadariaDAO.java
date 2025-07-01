@@ -109,7 +109,7 @@ public class PadariaDAO {
     
     private final JframeDeletar jframedeletar = new JframeDeletar();
     
-    private void buscarAlunoPorNome(String nome) throws SQLException {
+    public void buscarAlunoPorNome(String nome) throws SQLException {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -126,6 +126,7 @@ public class PadariaDAO {
             DefaultTableModel tableModel = new DefaultTableModel();
 
             // Define as colunas da tabela
+            
             tableModel.addColumn("Nome");
             tableModel.addColumn("Email");
             tableModel.addColumn("Telefone");
@@ -154,6 +155,7 @@ public class PadariaDAO {
             try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
         }
     }
+    
     
     // Updade
     

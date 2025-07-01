@@ -34,7 +34,7 @@ public class JframeDeletar extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaDeletarBuscar = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        textLabel = new javax.swing.JTextField();
         botaoDeletar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -61,6 +61,11 @@ public class JframeDeletar extends javax.swing.JFrame {
         });
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,7 +76,7 @@ public class JframeDeletar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
@@ -84,7 +89,7 @@ public class JframeDeletar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoDeletar)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
@@ -100,17 +105,29 @@ public class JframeDeletar extends javax.swing.JFrame {
     private final PadariaDAO padariadao = new PadariaDAO();
     
     private void botaoDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDeletarActionPerformed
-        String lblDeletar = botaoDeletar.getText();
+        String lblDeletar = textLabel.getText();
         
         if (lblDeletar != null && !lblDeletar.trim().isEmpty()) {
             try {
                 padariadao.deleteAluno(lblDeletar);
-               // padariadao.buscarAlunoporNome(lblDeletar);
+                //padariadao.buscarAlunoporNome(lblDeletar);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Por favor, digite um ID valido");
             }
         }
     }//GEN-LAST:event_botaoDeletarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String lblBuscar = textLabel.getText();
+        
+        if (lblBuscar != null && !lblBuscar.trim().isEmpty()) {
+            try {
+                padariadao.buscarAlunoPorNome(lblBuscar);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Digite um nome existente");
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,7 +168,7 @@ public class JframeDeletar extends javax.swing.JFrame {
     private javax.swing.JButton botaoDeletar;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     public javax.swing.JTable tabelaDeletarBuscar;
+    private javax.swing.JTextField textLabel;
     // End of variables declaration//GEN-END:variables
 }

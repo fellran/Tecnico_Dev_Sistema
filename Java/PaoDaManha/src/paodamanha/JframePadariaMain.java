@@ -6,8 +6,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class JframePadariaMain extends javax.swing.JFrame {
-
-    
     
     /**
      * Creates new form JframePadariaMain

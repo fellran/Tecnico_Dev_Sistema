@@ -11,3 +11,5 @@ CREATE TABLE tb_usuario(
     curso VARCHAR(100),
     matricula SMALLINT
 )AUTO_INCREMENT = 1;
+
+SELECT * FROM tb_usuario;
