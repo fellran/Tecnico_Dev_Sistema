@@ -1,0 +1,20 @@
+//  Ler e Imprimir Vetor: Crie um vetor de 5 posições, peça ao usuário para preenchê-lo e depois imprima todos os elementos.
+
+import java.util.Scanner;
+
+public class LerImprimirvetor {
+    public static void main(String[] args) {
+        int[] n = new int[5];
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Digite 5 números inteiros:");
+        for (int i = 0; i < n.length; i++) {
+            n[i] = sc.nextInt();
+        }
+        System.out.println("Os números digitados foram:");
+        
+            for (int i = 0; i < n.length; i++) {
+            System.out.println(n[i]);
+        }
+        sc.close();
+    }
+}
